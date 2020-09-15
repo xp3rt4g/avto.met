@@ -1,6 +1,6 @@
 ﻿/*
 Created: 2. 09. 2020
-Modified: 9. 09. 2020
+Modified: 11. 09. 2020
 Model: MySQL 8.0
 Database: MySQL 8.0
 */
@@ -230,6 +230,33 @@ CREATE TABLE `colors`
 )
 ;
 
+-- Table images
+
+CREATE TABLE `images`
+(
+  `id` Int NOT NULL AUTO_INCREMENT,
+  `url` Char(200) NOT NULL,
+  PRIMARY KEY (`id`)
+)
+;
+
+-- Table cars_images
+
+CREATE TABLE `cars_images`
+(
+  `id` Int NOT NULL AUTO_INCREMENT,
+  `image_id` Int NOT NULL,
+  `car_id` Int NOT NULL,
+  PRIMARY KEY (`id`)
+)
+;
+
+CREATE INDEX `IX_Relationship12` ON `cars_images` (`image_id`)
+;
+
+CREATE INDEX `IX_Relationship13` ON `cars_images` (`car_id`)
+;
+
 -- Create foreign keys (relationships) section -------------------------------------------------
 
 ALTER TABLE `users` ADD CONSTRAINT `Relationship1` FOREIGN KEY (`account_type_id`) REFERENCES `account_types` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
@@ -263,6 +290,12 @@ ALTER TABLE `cars` ADD CONSTRAINT `Relationship10` FOREIGN KEY (`number_of_owner
 ;
 
 ALTER TABLE `cars` ADD CONSTRAINT `Relationship11` FOREIGN KEY (`color_id`) REFERENCES `colors` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+;
+
+ALTER TABLE `cars_images` ADD CONSTRAINT `Relationship12` FOREIGN KEY (`image_id`) REFERENCES `images` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+;
+
+ALTER TABLE `cars_images` ADD CONSTRAINT `Relationship13` FOREIGN KEY (`car_id`) REFERENCES `cars` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ;
 
 
