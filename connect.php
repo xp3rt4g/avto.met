@@ -18,7 +18,4 @@ try {
      throw new \PDOException($e->getMessage(), (int)$e->getCode());
 }
 
-
-$salt = 'lerkjth654dgk%$#$#FG';
-
 ?>
