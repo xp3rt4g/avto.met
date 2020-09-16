@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/header_hamburger.css">
 </head>
 <body>
 <!-- SHOW HEADER -->
@@ -16,7 +17,7 @@
               <div class="row">
                   <!--LOGO -->
                   <div class="col-4 pl-0">
-                    <a target="_self" href="https://www.avto.net">
+                    <a target="_self" href="index.php">
                     <img name="Avto.net" src="img/logo.png" alt="www.avto.met" class="logo"/>                            </a>
                    </div>
                     <!--/  LOGO -->
@@ -33,7 +34,7 @@
                     <div class="d-none d-md-block col-8 moj-menu p-0 m-0">
                     <ul>
                       <li>
-                         <a target="_blank" href="https://www.avto.net/_2016mojavtonet/ad_select_rubric_icons.asp">
+                         <a target="_blank" href="add_ad.php">
                           <span class="moj-menu-hover mx-1 px-1">
                           <i class="fa fa-plus-circle mx-1"></i>
                           Objavi oglas
@@ -41,7 +42,7 @@
                           </a>
                       </li>
                       <li>
-                         <a href="https://www.avto.net/_2016mojavtonet/parkirano.asp" target="_blank">
+                         <a href="parked.php" target="_blank">
                           <span class="moj-menu-hover mx-1 px-1">
                           <i class="fa fa-star mx-1"></i>
                           Parkirano
@@ -49,10 +50,10 @@
                         </a>
                       </li>
                       <li>
-                         <a href="https://moj.avto.net" target="_blank">
+                         <a href="my_avtomet.php" target="_blank">
                           <span class="moj-menu-dark mx-1 px-2">
                           <i class="fa fa-user mx-1"></i>
-                          moj.avto.net
+                          moj.avto.met
                           </span>
                           </a>
                       </li>
@@ -66,8 +67,8 @@
     <div class="d-none d-lg-block ddcolortabsFULLWIDTH">
         <div id="droplinemenu" class="ddcolortabs">
             <ul class="p-0 m-0">
-            <li><a href="https://www.avto.net" rel="submenuHOME" class="first"><span class="first"><i class="fa fa-home fa-lg"></i></span></a></li>
-            <li><a href="https://www.avto.net/Ads/search_category.asp?SID=10000" rel="submenuAVTO"><span>Avto</span></a></li>
+            <li><a href="index.php" rel="submenuHOME" class="first"><span class="first"><i class="fa fa-home fa-lg"></i></span></a></li>
+            <li><a href="car_search.php" rel="submenuAVTO"><span>Išči avte</span></a></li>
             </ul>
         </div>
        </div>
