@@ -5,7 +5,7 @@ if(isset($_POST['selected_option']))
     $selected_option=filter_input(INPUT_POST, "selected_option", FILTER_SANITIZE_STRING);
 else exit(); // No value is sent
 
-$query="SELECT * FROM models WHERE manufacturer_id='$selected_option'"; // Just an example. Build the query as per your logic
+$query="SELECT * FROM models WHERE manufacturer_id='$selected_option' ORDER BY name"; // Just an example. Build the query as per your logic
 
 // Process your query
 $stmt = $pdo->prepare($query);

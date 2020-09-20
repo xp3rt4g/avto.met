@@ -24,7 +24,7 @@ include_once './header.php';
                         
                             include_once 'connect.php';
 
-                            $query = "SELECT * FROM manufacturers;";
+                            $query = "SELECT * FROM manufacturers ORDER BY name;";
                             $stmt = $pdo->prepare($query);
                             $stmt->execute();
 
@@ -41,7 +41,7 @@ include_once './header.php';
                         
                             include_once 'connect.php';
 
-                            $query = "SELECT * FROM models WHERE manufacturer_id = (SELECT MIN(id) FROM manufacturers);";
+                            $query = "SELECT m.* FROM models m INNER JOIN manufacturers man ON man.id=m.manufacturer_id WHERE man.name = (SELECT MIN(name) FROM manufacturers) ORDER BY m.name;";
                             $stmt = $pdo->prepare($query);
                             $stmt->execute();
                             echo '<option value="all">Vsi modeli</option>';
