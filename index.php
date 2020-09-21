@@ -200,6 +200,26 @@ include_once './header.php';
 
         <div class="col-md-4">
             
+            <div class="col-12 px-0 py-2">
+                <div class="input-group">
+                <select name="kmMax" id="kmMax" class="custom-select">
+                
+                    <option value="0">Prevoženi km do</option>
+                    <option value="5000">do 5000 km</option>
+                    <option value="10000">do 10000 km</option>
+                    <option value="20000">do 20000 km</option>
+                    <option value="25000">do 25000 km</option>
+                    <option value="50000">do 50000 km</option>
+                    <option value="75000">do 75000 km</option>
+                    <option value="100000">do 100000 km</option>
+                    <option value="125000">do 125000 km</option>
+                    <option value="150000">do 150000 km</option>
+                    <option value="200000">do 200000 km</option>
+                    <option value="250000">do 250000 km</option>
+                
+                </select>
+                </div>
+            </div>
             
         </div>
     </div>
