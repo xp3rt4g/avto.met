@@ -19,7 +19,10 @@ include_once './header.php';
         <div class="form-row">
             <div class="col-md-4">
                 <div class="col-12 px-0 py-2">
+                    <div class="input-group">
+                    
                     <select name="manufacturer" id="manufacturer" class="custom-select">
+                        <option value="all">Vse znamke</option>
                         <?php 
                         
                             include_once 'connect.php';
@@ -34,22 +37,13 @@ include_once './header.php';
                         
                         ?>
                     </select>
+                    </div>
                 </div>
                 <div class="col-12 px-0">
+                    <div class="input-group">
+                    
                         <select name="model" id="model" class="custom-select">
-                        <?php 
-                        
-                            include_once 'connect.php';
-
-                            $query = "SELECT m.* FROM models m INNER JOIN manufacturers man ON man.id=m.manufacturer_id WHERE man.name = (SELECT MIN(name) FROM manufacturers) ORDER BY m.name;";
-                            $stmt = $pdo->prepare($query);
-                            $stmt->execute();
-                            echo '<option value="all">Vsi modeli</option>';
-                            while ($row = $stmt->fetch()) {
-                                echo '<option value="'.$row['id'].'">'.$row['name'].'</option>';
-                            }
-                        
-                        ?>
+                        <option value="all">Vsi modeli</option>
                         <script type="text/javascript">
                         $(document).ready(function(e) {
                             $('#manufacturer').change(function(e) { // When the select is changed
@@ -71,6 +65,8 @@ include_once './header.php';
                         </script>
 
                         </select>
+
+                    </div>
                 </div>
             </div>
 
@@ -123,7 +119,7 @@ include_once './header.php';
                         </select>
 
                         <select name="priceTo" id="priceTo" class="custom-select">
-                            <option value="0">Cena do</option>
+                            <option value="999999">Cena do</option>
                             <option value="100">do 100 EUR</option>
                             <option value="500">do 500 EUR</option>
                             <option value="1000">do 1.000 EUR</option>
@@ -168,11 +164,43 @@ include_once './header.php';
                     </div>
                 </div>
 
-                <div class="col-12">
-                
+                <div class="col-12 px-0 py-0">
+                    <div class="input-group">
+                        <select name="yearMin" id="yearMin" class="custom-select">
+                            <option value="0">Letnik od</option>
+                            <?php 
+                            
+                            $i = date("Y");
+
+                            while($i > 1974){
+                                echo "<option value=".$i.">od ".$i."</option>";
+                                $i = $i - 1;
+                            }
+                            
+                            ?>
+                        </select>
+
+                        <select name="yearMax" id="yearMax" class="custom-select">
+                            <option value="0">Letnik do</option>
+                            <?php 
+                            
+                            $i = date("Y");
+
+                            while($i > 1974){
+                                echo "<option value=".$i.">do ".$i."</option>";
+                                $i = $i - 1;
+                            }
+                            
+                            ?>
+                        </select>
+                    </div>
                 </div>
             
             </div>
+
+        <div class="col-md-4">
+            
+            
         </div>
     </div>
     </form>
