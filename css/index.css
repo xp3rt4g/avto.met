@@ -1,0 +1,23 @@
+.orange{
+    color: #f47a20;
+}
+
+.orange-bg{
+    background-color: #f47a20;
+    display: inline-block;
+    color: #FFFFFF;
+    font-weight: bold;
+    border: solid 0 #f47a20;
+    border-radius: 6px;
+    padding: 0;
+    margin: 0;
+}
+
+.orange-bg:hover{
+    background-color: #b34b02;
+    color: #FFFFFF;
+}
+
+.black{
+    color: #000000;
+}
