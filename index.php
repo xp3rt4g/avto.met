@@ -185,7 +185,7 @@ include_once './header.php';
                                 </select>
 
                                 <select name="yearMax" id="yearMax" class="custom-select">
-                                    <option value="0">Letnik do</option>
+                                    <option value="999999">Letnik do</option>
                                     <?php 
                             
                             $i = date("Y");
