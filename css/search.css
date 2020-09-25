@@ -2,6 +2,10 @@ body{
     background-color: #E9E9E9;
 }
 
+.container {
+    max-width: 972px;
+}
+
 .results-row{
     width: 728px;
 }
@@ -57,7 +61,6 @@ body{
 
 .results-price{
     position: relative;
-    float: left;
     width: 160px;
     height: 75px;
     padding: 0;
@@ -71,6 +74,8 @@ body{
     font-weight: bold;
     color: #062f57;
     background-color: #FFFFFF;
+    margin-left: auto !important;
+    margin-right: auto;
 }
 
 .price-show{

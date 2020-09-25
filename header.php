@@ -10,21 +10,19 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-<!-- SHOW HEADER -->
+
 <div class="container-fluid headerwrapper p-0">
     <div class="row m-0">
     	<div class="container headermid">
               <div class="row">
-                  <!--LOGO -->
+                  
                   <div class="col-4 pl-0">
                     <a target="_self" href="index.php">
                     <img name="Avto.net" src="img/logo.png" alt="www.avto.met" class="logo"/>                            </a>
                    </div>
-                    <!--/  LOGO -->
-                    <!-- NAV -->
+
                     <div class="col-8 d-md-none moj-menu p-0 m-0 text-right">
                         
-                     <!-- Hamburger-->
                       <button class="navbar-toggler first-button border-0" type="button" data-toggle="offcanvas">
                           <div class="animated-icon1">
                               <span></span><span></span><span></span>
@@ -50,7 +48,7 @@
                         </a>
                       </li>
                       <li>
-                         <a href="my_avtomet.php" target="_blank">
+                         <a href="login.php" target="_blank">
                           <span class="moj-menu-dark mx-1 px-2">
                           <i class="fa fa-user mx-1"></i>
                           moj.avto.met
@@ -59,11 +57,9 @@
                       </li>
                     </ul>                
                     </div>
-                    <!--/  NAV-->
-                </div><!--/  ROW -->
-		</div><!--/  CONTAINER -->
-	</div><!--/  ROW -->
-	<!-- / SUBMENU - RUBRIKE-->
+                </div>
+		</div>
+	</div>
     <div class="d-none d-lg-block ddcolortabsFULLWIDTH">
         <div id="droplinemenu" class="ddcolortabs">
             <ul class="p-0 m-0">
@@ -72,24 +68,8 @@
             </ul>
         </div>
        </div>
-	<!-- / DDCOLORTABS-->
-    <!-- OLD SUB TABS -->
-    <div class="tabcontainerFULLWIDTH d-none">
-            <div class="tabcontainer">
-                <div id="submenuHOME" class="tabcontent"></div>
-                <div id="submenuAVTO" class="tabcontent"></div>
-                <div id="submenuMOTO" class="tabcontent"></div>
-                <div id="submenuGOSPODARSKA" class="tabcontent"></div>
-                <div id="submenuMEHANIZACIJA" class="tabcontent"></div>
-                <div id="submenuPROSTICAS" class="tabcontent"></div>
-                <div id="submenuOPREMA" class="tabcontent"></div>
-                <div id="submenuMOJAVTONET" class="tabcontent"></div>
-                <div id="submenuRUBRIKE" class="tabcontent"></div>
-            </div>
-    </div>   
-	<!-- / OLD SUB TABS-->    
 </div>
-<!--/  SHOW HEADER -->
+
     
 </div>
 </body>

@@ -18,6 +18,10 @@
     color: #FFFFFF;
 }
 
+.container {
+    max-width: 972px;
+}
+
 .black{
     color: #000000;
 }

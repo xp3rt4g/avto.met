@@ -30,7 +30,7 @@
 
             include_once 'connect.php';
 
-            $query = "SELECT c.*, m.name AS model, man.name AS manufacturer, ft.name AS fueltype, g.name AS gearbox FROM cars c INNER JOIN fuel_types ft ON ft.id=c.fuel_type_id INNER JOIN gearboxes g ON g.id = c.gearbox_id INNER JOIN models m ON m.id=c.model_id INNER JOIN manufacturers man ON man.id=m.manufacturer_id WHERE c.mileage <= $kmMax AND c.manufacture_year >= $yearMin 
+            $query = "SELECT c.*, m.name AS model, man.name AS manufacturer, ft.name AS fueltype, g.name AS gearbox, i.url AS url FROM cars c INNER JOIN fuel_types ft ON ft.id=c.fuel_type_id INNER JOIN gearboxes g ON g.id = c.gearbox_id INNER JOIN models m ON m.id=c.model_id INNER JOIN manufacturers man ON man.id=m.manufacturer_id INNER JOIN cars_images ci ON c.id=ci.car_id INNER JOIN images i ON i.id=ci.image_id  WHERE c.mileage <= $kmMax AND c.manufacture_year >= $yearMin 
             AND c.manufacture_year <= $yearMax AND c.price <= $priceTo AND c.price >= $priceFrom ";
             
             if($model_id != "all")
@@ -70,11 +70,11 @@
 
                     <div class ="bg-dark px-3 py-2 font-weight-bold text-truncate text-white text-decoration-none results-title"><?php echo $row['type'] ?></div>
 
-                    <div class="col-auto px-3 py-0 py-sm-3 pt-3 photo">
+                    <div class="col-auto px-3 py-0 py-sm-3 pt-3 photo d-flex justify-content-center align-items-center">
                     
-                        <div class="photo-display">
+                        <div class="photo-display align-self-center">
                         
-                            <img src="https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" alt="<?php echo $row['type']; ?>" class="img-fluid">
+                            <img src="<?php echo $row['url'] ?>" alt="<?php echo $row['type']; ?>" class="img-fluid">
 
                         </div>
 
@@ -99,7 +99,7 @@
                                         <tr>
                                         
                                             <td class="d-none d-md-block pl-3">Prevoženih</td>
-                                            <td class="pl-3"><?php echo $row['mileage'] ?></td>
+                                            <td class="pl-3"><?php echo $row['mileage'] ?> km</td>
                                         
                                         </tr>
                                         <tr>
@@ -138,7 +138,7 @@
                                 
                                     <div class="price-text">
                                     
-                                    <?php echo $row['price'] . "€"; ?>
+                                    <?php echo number_format($row['price'] , 0, ',', '.') . " €"; ?>
 
                                     </div>
                                 
@@ -153,7 +153,6 @@
                 </div>
                 
                 <?php
-            break;
             }
 
             
