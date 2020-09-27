@@ -18,15 +18,23 @@ include_once 'header.php';
     </div>
 
     <?php
-    session_start();
         if(isset($_SESSION['err'])){
             $err = $_SESSION['err'];
 
             if($err == 1){
                 echo    "<div class='alert alert-danger' role='alert'>Gesli se morata ujemati!</div>";
+                $err = NULL;
+                $_SESSION['err'] = NULL;
             }
             elseif($err == 2){
                 echo    "<div class='alert alert-danger' role='alert'>Za registracijo se morate strinjati z pravnim obvestilom!</div>";
+                $err = NULL;
+                $_SESSION['err'] = NULL;
+            }
+            elseif($err == 3){
+                echo    "<div class='alert alert-danger' role='alert'>Prišlo je do neznane napake, prosimo poskusite ponovno!</div>";
+                $err = NULL;
+                $_SESSION['err'] = NULL;
             }
         }
 
@@ -36,7 +44,7 @@ include_once 'header.php';
 
     <div class="card shadow-box">
     
-    <form action="register.php" method="post">
+    <form action="registerPersonSend.php" method="post">
     
         <div class="card-body">
         

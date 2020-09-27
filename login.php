@@ -14,7 +14,21 @@
                 </div>
             </div>
     </div>
+    <?php
 
+    if(isset($_SESSION['successRegister'])){
+        $success = $_SESSION['successRegister'];
+
+        if($success == 1){
+            echo "<div class='alert alert-success' role='alert'>
+                Uspešno ste se registrirali na avto.met. Lahko nadaljujete s prijavo!
+            </div>";
+            $success = NULL;
+            $_SESSION['successRegister'] = NULL;
+        }
+    }
+
+    ?>
     <div class="card-deck">
 
     <form action="loginProcess.php" method="post">
@@ -30,7 +44,7 @@
                             <i class="fa fa-user fa-2x"></i>
                         </div>
                     </div>
-                    <input type="text" name="email" id="email" placeholder="Vpišite E-mail!" class="form-control form-control-lg">
+                    <input type="email" name="email" id="email" placeholder="Vpišite E-mail!" class="form-control form-control-lg" required>
 
                 </div>
 
@@ -38,9 +52,28 @@
                     <div class="row">
                         <div class="col-6">Geslo:</div>
                         <div class="col-6 text-right">
-                            <div class="custom-control custom-checkbox">
-                                <label><input type="checkbox" name="showpass" id="showpass" onclick="showPass()"> Prikaži geslo</label>
+                            <div class="pretty p-switch p-slim">
+                                <input type="checkbox" name="showpass" id="showpass" onclick="showPass()">
+                                <div class="state">
+                                    <label> Prikaži geslo</label>
+                                </div>
                             </div>
+
+                            <!-- 
+
+                            <div class="pretty p-icon p-toggle p-plain">
+                                <input type="checkbox" name="showpass" id="showpass" onclick="showPass()">
+                                <div class="state p-success-o p-on">
+                                    <i class="icon fa fa-eye"></i>
+                                    <label>Skrij geslo</label>
+                                </div>
+                                <div class="state p-off">
+                                    <i class="icon fa fa-eye-slash"></i>
+                                    <label>Pokaži geslo</label>
+                                </div>
+                            </div>
+
+                            -->
                         </div>
                     </div>
                 </label>
@@ -50,7 +83,7 @@
                             <i class="fa fa-lock fa-2x"></i>
                         </div>
                     </div>
-                    <input type="password" name="password" id="password" placeholder="Vpišite geslo!" class="form-control form-control-lg">
+                    <input type="password" name="password" id="password" placeholder="Vpišite geslo!" class="form-control form-control-lg" required>
                 </div>
             </div>
 

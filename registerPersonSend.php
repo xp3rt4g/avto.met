@@ -1,7 +1,6 @@
 <?php 
 
 include 'connect.php';
-session_start();
 
 /*echo $_POST['name']; 
 echo $_POST['postCode'];
@@ -23,6 +22,24 @@ if(isset($_POST['name']) && isset($_POST['postCode']) && isset($_POST['street'])
 
     if($_POST['password'] == $_POST['passwordConfirm']){
 
+        $_SESSION['successRegister'] = 1;
+
+        $name = $_POST['name'];
+        $postCode = $_POST['postCode'];
+        $street = $_POST['street'];
+        $title = $_POST['title'];
+        $phone = $_POST['phone'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+
+        $password = password_hash($password, PASSWORD_DEFAULT);
+
+        $query = "INSERT INTO users (name, seller_title, address, phone, email, pass, account_type_id, town_id) VALUES (?,?,?,?,?,?,(SELECT id FROM account_types WHERE name = 'Posameznik'),?)";
+
+        $stmt = $pdo->prepare($query);
+        $stmt->execute([$name, $title, $street, $phone, $email, $password, $postCode]);
+
+        header("Location: login.php");
     }
     else{
         $_SESSION['err'] = 1;
