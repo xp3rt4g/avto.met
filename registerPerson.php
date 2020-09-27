@@ -17,6 +17,23 @@ include_once 'header.php';
         </div>
     </div>
 
+    <?php
+    session_start();
+        if(isset($_SESSION['err'])){
+            $err = $_SESSION['err'];
+
+            if($err == 1){
+                echo    "<div class='alert alert-danger' role='alert'>Gesli se morata ujemati!</div>";
+            }
+            elseif($err == 2){
+                echo    "<div class='alert alert-danger' role='alert'>Za registracijo se morate strinjati z pravnim obvestilom!</div>";
+            }
+        }
+
+
+
+    ?>
+
     <div class="card shadow-box">
     
     <form action="register.php" method="post">
@@ -89,7 +106,7 @@ include_once 'header.php';
 
             <hr class="mb-4 mt-4">
             <div class="form-check pretty p-icon p-rotate mb-4">
-                <input class="form-check-input" type="checkbox" value="1" id="legal1">
+                <input name="legal1" class="form-check-input" type="checkbox" value="legal1" id="legal1">
                 <div class="state p-danger-o">
                 <i class="icon fa fa-check"></i>
                 <label class="form-check-label" for="defaultCheck1">
@@ -99,20 +116,10 @@ include_once 'header.php';
             </div>
 
             <div class="form-check pretty p-icon p-rotate mb-4">
-                <input class="form-check-input" type="checkbox" value="1" id="legal1">
+                <input name="legal2" class="form-check-input" type="checkbox" value="legal2" id="legal2">
                 <div class="state p-danger-o">
                 <i class="icon fa fa-check"></i>
                 <label class="form-check-label" for="legal1">
-                    Potrjujem seznanitev z vsebino pravnega obvsetila in se z njim v celoti strinjam.
-                </label>
-                </div>
-            </div>
-
-            <div class="form-check pretty p-icon p-rotate mb-4">
-                <input class="form-check-input" type="checkbox" value="1" id="legal2">
-                <div class="state p-danger-o">
-                <i class="icon fa fa-check"></i>
-                <label class="form-check-label" for="legal2">
                     Potrjujem seznanitev z vsebino pravnega obvsetila in se z njim v celoti strinjam.
                 </label>
                 </div>
