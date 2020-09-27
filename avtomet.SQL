@@ -1,6 +1,6 @@
 ﻿/*
 Created: 2. 09. 2020
-Modified: 11. 09. 2020
+Modified: 23. 09. 2020
 Model: MySQL 8.0
 Database: MySQL 8.0
 */
@@ -124,7 +124,7 @@ CREATE TABLE `cars`
   `id` Int NOT NULL AUTO_INCREMENT,
   `user_id` Int NOT NULL,
   `model_id` Int NOT NULL,
-  `type` Char(30),
+  `type` Char(75) NOT NULL,
   `car_type_id` Int NOT NULL,
   `vehicle_status_id` Int NOT NULL,
   `has_warranty` Bool NOT NULL DEFAULT 0,
@@ -176,12 +176,13 @@ CREATE TABLE `cars`
   `dab` Bool NOT NULL DEFAULT 0,
   `navigation` Bool NOT NULL DEFAULT 0,
   `rear_camera` Bool NOT NULL DEFAULT 0,
-  `towing_hook` Bool NOT NULL,
+  `towing_hook` Bool NOT NULL DEFAULT 0,
   `hill_assist` Bool NOT NULL DEFAULT 0,
   `pdc` Bool NOT NULL DEFAULT 0,
   `comment` Text,
   `avaliable` Bool NOT NULL DEFAULT 0,
-  `date_posted` Date NOT NULL,
+  `date_posted` Timestamp NOT NULL,
+  `date_edited` Timestamp NOT NULL,
   PRIMARY KEY (`id`)
 )
 ;
