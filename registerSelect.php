@@ -65,7 +65,7 @@ include_once 'header.php'
             
                 <a href="registerCompany.php" class="btn btn-lg btn-block orange-bg text-center py-0 mb-3">
                     <i class="fa fa-user fa-2x px-2 py-2"></i>
-                    <span class="px-3 py-2 float-left">Registriraj kot POSAMEZNK</span>
+                    <span class="px-3 py-2 float-left">Registriraj kot TRGOVEC</span>
                 </a>
 
                 </div>

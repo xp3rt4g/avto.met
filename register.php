@@ -1,7 +1,7 @@
 <?php 
 
 include 'connect.php';
-session_Sta
+session_start();
 
 /*echo $_POST['name']; 
 echo $_POST['postCode'];
