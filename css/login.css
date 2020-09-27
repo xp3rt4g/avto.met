@@ -9,6 +9,48 @@ body{
    background-color: #000;
 }
 
+.black{
+    color: #000;
+    font-weight: bold;
+}
+
 .shadow-box{
     box-shadow: 0px 1px 2px 0px rgba(0,0,0,.5);
+}
+
+.orange-bg{
+    display: inline-block;
+    color: #FFFFFF;
+    font-weight: bold;
+    border: solid 0px #F47A20;
+    background-color: #F47A20;
+    border-radius: 6px;
+    padding: 0px;
+    margin: 0px;
+}
+
+.orange-bg:hover{
+    background-color: #b34b02;
+    color: #FFFFFF;
+}
+
+.orange-bg i{
+    float:left;
+    height: 100%;
+    width: 50px;
+  	line-height:34px;
+	font-size:15px;
+	padding: 0px;
+	border-style:solid;
+	border-width:0px 1px 0px 0px;
+	border-color:#7F9DB9; 
+	text-align: center;
+}
+
+.orange-bg span{
+    height:100%;
+    line-height:34px;
+    margin:0px;
+    padding: 0px;
+    text-align: center;
 }
