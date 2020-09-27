@@ -21,7 +21,7 @@
 
         <div class="card rounded shadow-box">
 
-            <div class="card-header h-4 font-weight-bold">Prijava v avto.met</div>
+            <div class="card-header h4 font-size-l">Prijava v avto.met</div>
             <div class="card-body">
                 <label for="email" class="font-weight-bold">E-mail:</label>
                 <div class="input-group mb-2 mr-sm-2 mb-3">
@@ -75,7 +75,26 @@
 
     <div class="card rounded shadow-box">
 
-
+        <div class="card-header h4">Registracija na avto.met</div>
+        <div class="card-body font-weight-normal">
+            Kaj pridobite z registracijo:
+            <ul>
+                <li>objavljanje oglasov kot POSAMEZNIK</li>
+                <li>objavljanje večih oglasov kot TRGOVEC</li>
+                <li>shranjevanje priljubljenih kriterijev iskanja</li>
+                <li>shranjevanje priljubljenih avtomobilov</li>
+            </ul>
+            Število objav je lahko omejeno odvisno od tipa registracije in naročniškega razmerja!
+        </div>
+        <div class="card-footer bg-white border-top-0 text-center">
+        
+            <a href="registerSelect.php" class="btn btn-lg btn-block orange-bg text-center py-0 mb-3">
+                <i class="fa fa-pencil text-white px-2 py-2"></i>
+                <span class="text-white font-weight-bold px-3 py-2 float-left">Registriraj se!</span>
+            </a>
+            <a href="#"><span class="invisible">.</span></a>
+        
+        </div>
     </div>
 
 
