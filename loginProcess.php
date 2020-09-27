@@ -1,7 +1,27 @@
 <?php 
+    session_start();
+    include_once 'connect.php';
 
-    include_once 'database.php';
+    if(isset($_POST['email']) && isset($_POST['password'])){
 
-    $email = $_POST['email'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+
+        $query = "SELECT * FROM users WHERE email=?";
+
+        $stmt = $pdo->prepare($query);
+        $stmt->execute([$email]);
+
+        if($stmt->rowCount() == 1){
+
+            $user = $stmt->fetch();
+            if(password_verify($password, $user['pass'])){
+                $_SESSION['user_id'] = $user['id'];
+                $_SESSION['user_type'] = $user['account_type_id'];
+                header("Location: homepage.php");
+                die();
+            }
+        }
+    }
 
 ?>

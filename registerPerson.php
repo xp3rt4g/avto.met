@@ -1,5 +1,4 @@
 <?php 
-
 include_once 'header.php';
 
 ?>
@@ -33,6 +32,11 @@ include_once 'header.php';
             }
             elseif($err == 3){
                 echo    "<div class='alert alert-danger' role='alert'>Prišlo je do neznane napake, prosimo poskusite ponovno!</div>";
+                $err = NULL;
+                $_SESSION['err'] = NULL;
+            }
+            elseif($err == 4){
+                echo "<div class='alert alert-danger' role='alert'>Uporabnik s tem emailom že obstaja!</div>";
                 $err = NULL;
                 $_SESSION['err'] = NULL;
             }
