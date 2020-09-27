@@ -113,3 +113,5 @@ function showPass() {
 }
 
 </script>
+
+<?php include_once 'footer.php'; ?>

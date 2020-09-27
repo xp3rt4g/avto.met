@@ -8,11 +8,12 @@ include_once './header.php';
 <body class="h1">
 
     <div class="container p-0">
-        <div class="container m-0 bg-white">
+
+        <div class="container m-0 bg-white rounded-bottom shadow-box">
             <div class="row">
                 <div class="col mt-3">
                     <h4>
-                        Iskanje vozil!
+                        Hitro iskanje vozil!
                     </h4>
                 </div>
             </div>
