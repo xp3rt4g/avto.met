@@ -17,7 +17,7 @@ include_once './header.php';
                     </h4>
                 </div>
             </div>
-            <form action="search.php" method="post">
+            <form action="search.php" method="get">
             <input type="hidden" name="search_type" value="simple">
                 <div class="form-row">
                     <div class="col-md-4">
