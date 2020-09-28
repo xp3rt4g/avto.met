@@ -297,6 +297,30 @@ if(isset($_GET['id'])){
         </div>
     </div>
 
+    <div class="container bg-white rounded shadow-box my-3 p-0 pb-2">
+       <div class="row m-0 p-0 rounded">
+            <div class="col-12 bg-blue rounded-top p-2 pl-3 font-weight-bold text-white">Prodajalec</div>
+            <div class="col-12">
+                <ul class="list-group list-group-flush p-0 text-center">
+                    <li class="list-group-item border-bottom-0 h2"><?php echo $row['seller']; ?></li>
+                    <li class="list-group-item p-0 h6 font-weight-bold text-muted border-bottom-0">Telefon:</li>
+                    <li class="list-group-item pt-0 border-bottom-0"><a href="tel:<?php echo $row['phone'] ?>" class="font-weight-bold"><p class="h3 font-weight-bold m-0 text-dark"><?php echo $row['phone'] ?></p></a></li>
+                    <li class="list-group-item pt-2 d-block d-md-none">
+                        <a href="mailto:<?php echo $row['email']; ?>" class="btn btn-block py-1 orange-bg text-white"><i class="fa fa-envelope px-3"></i><span class="pl-3 pr-3 font-weight-bold">E-mail prodajalcu</span></a>
+                    </li>
+                </ul>
+            </div>
+       </div> 
+    </div>
+
+    <div class="container p-0 pb-2">
+        <div class="row m-0 p-0 font-weight-normal">
+            <div class="col-12 p-0 pl-1 text-center text-lg-left">
+                <i class="fa fa-lg fa-calendar"></i> Objavljeno: <?php echo date("d.m.Y H:i:s", strtotime($row['date_posted'])); ?>
+            </div>
+        </div>
+    </div>
+
 
 
 </div>
