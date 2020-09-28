@@ -1,4 +1,14 @@
-﻿
+﻿/*
+Created: 2. 09. 2020
+Modified: 27. 09. 2020
+Model: MySQL 8.0
+Database: MySQL 8.0
+*/
+
+-- Create tables section -------------------------------------------------
+
+-- Table users
+
 CREATE TABLE `users`
 (
   `id` Int NOT NULL AUTO_INCREMENT,
@@ -22,6 +32,8 @@ CREATE INDEX `IX_Relationship1` ON `users` (`account_type_id`)
 CREATE INDEX `IX_Relationship2` ON `users` (`town_id`)
 ;
 
+-- Table account_types
+
 CREATE TABLE `account_types`
 (
   `id` Int NOT NULL AUTO_INCREMENT,
@@ -29,6 +41,8 @@ CREATE TABLE `account_types`
   PRIMARY KEY (`id`)
 )
 ;
+
+-- Table towns
 
 CREATE TABLE `towns`
 (
@@ -39,6 +53,8 @@ CREATE TABLE `towns`
 )
 ;
 
+-- Table manufacturers
+
 CREATE TABLE `manufacturers`
 (
   `id` Int NOT NULL AUTO_INCREMENT,
@@ -46,6 +62,8 @@ CREATE TABLE `manufacturers`
   PRIMARY KEY (`id`)
 )
 ;
+
+-- Table models
 
 CREATE TABLE `models`
 (
@@ -59,6 +77,8 @@ CREATE TABLE `models`
 CREATE INDEX `IX_Relationship3` ON `models` (`manufacturer_id`)
 ;
 
+-- Table fuel_types
+
 CREATE TABLE `fuel_types`
 (
   `id` Int NOT NULL AUTO_INCREMENT,
@@ -66,6 +86,8 @@ CREATE TABLE `fuel_types`
   PRIMARY KEY (`id`)
 )
 ;
+
+-- Table gearboxes
 
 CREATE TABLE `gearboxes`
 (
@@ -75,6 +97,8 @@ CREATE TABLE `gearboxes`
 )
 ;
 
+-- Table vehicle_status
+
 CREATE TABLE `vehicle_status`
 (
   `id` Int NOT NULL AUTO_INCREMENT,
@@ -83,6 +107,8 @@ CREATE TABLE `vehicle_status`
 )
 ;
 
+-- Table number_of_owners
+
 CREATE TABLE `number_of_owners`
 (
   `id` Int NOT NULL AUTO_INCREMENT,
@@ -90,6 +116,8 @@ CREATE TABLE `number_of_owners`
   PRIMARY KEY (`id`)
 )
 ;
+
+-- Table cars
 
 CREATE TABLE `cars`
 (
@@ -183,6 +211,8 @@ CREATE INDEX `IX_Relationship10` ON `cars` (`number_of_owner_id`)
 CREATE INDEX `IX_Relationship11` ON `cars` (`color_id`)
 ;
 
+-- Table car_types
+
 CREATE TABLE `car_types`
 (
   `id` Int NOT NULL AUTO_INCREMENT,
@@ -190,6 +220,8 @@ CREATE TABLE `car_types`
   PRIMARY KEY (`id`)
 )
 ;
+
+-- Table colors
 
 CREATE TABLE `colors`
 (
@@ -199,28 +231,21 @@ CREATE TABLE `colors`
 )
 ;
 
+-- Table images
+
 CREATE TABLE `images`
 (
   `id` Int NOT NULL AUTO_INCREMENT,
   `url` Char(200) NOT NULL,
-  PRIMARY KEY (`id`)
-)
-;
-
-CREATE TABLE `cars_images`
-(
-  `id` Int NOT NULL AUTO_INCREMENT,
-  `image_id` Int NOT NULL,
   `car_id` Int NOT NULL,
   PRIMARY KEY (`id`)
 )
 ;
 
-CREATE INDEX `IX_Relationship12` ON `cars_images` (`image_id`)
+CREATE INDEX `IX_Relationship12` ON `images` (`car_id`)
 ;
 
-CREATE INDEX `IX_Relationship13` ON `cars_images` (`car_id`)
-;
+-- Create foreign keys (relationships) section -------------------------------------------------
 
 ALTER TABLE `users` ADD CONSTRAINT `Relationship1` FOREIGN KEY (`account_type_id`) REFERENCES `account_types` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ;
@@ -255,8 +280,7 @@ ALTER TABLE `cars` ADD CONSTRAINT `Relationship10` FOREIGN KEY (`number_of_owner
 ALTER TABLE `cars` ADD CONSTRAINT `Relationship11` FOREIGN KEY (`color_id`) REFERENCES `colors` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ;
 
-ALTER TABLE `cars_images` ADD CONSTRAINT `Relationship12` FOREIGN KEY (`image_id`) REFERENCES `images` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+ALTER TABLE `images` ADD CONSTRAINT `Relationship12` FOREIGN KEY (`car_id`) REFERENCES `cars` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ;
 
-ALTER TABLE `cars_images` ADD CONSTRAINT `Relationship13` FOREIGN KEY (`car_id`) REFERENCES `cars` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-;
+
