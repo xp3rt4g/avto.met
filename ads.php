@@ -15,7 +15,7 @@ if(isset($_GET['id'])){
 
     $id_car  = $_GET['id'];
 
-    $query = "SELECT c.*, i.url, t.name AS town, t.post_number, col.name AS color, noo.name AS owner_number, vs.name AS status, ft.name AS fuel, gr.name AS gearbox FROM cars c INNER JOIN number_of_owners noo ON noo.id=c.number_of_owner_id INNER JOIN colors col ON col.id=c.color_id INNER JOIN gearboxes gr ON gr.id=c.gearbox_id INNER JOIN fuel_types ft ON ft.id=c.fuel_type_id INNER JOIN images i ON i.car_id=c.id INNER JOIN vehicle_status vs ON vs.id=c.vehicle_status_id INNER JOIN users us ON us.id=c.user_id INNER JOIN towns t ON t.id=us.town_id WHERE c.id=?";
+    $query = "SELECT c.*, us.seller_title AS seller, us.phone AS phone, us.email AS email, i.url, t.name AS town, t.post_number, col.name AS color, noo.name AS owner_number, vs.name AS status, ft.name AS fuel, gr.name AS gearbox FROM cars c INNER JOIN number_of_owners noo ON noo.id=c.number_of_owner_id INNER JOIN colors col ON col.id=c.color_id INNER JOIN gearboxes gr ON gr.id=c.gearbox_id INNER JOIN fuel_types ft ON ft.id=c.fuel_type_id INNER JOIN images i ON i.car_id=c.id INNER JOIN vehicle_status vs ON vs.id=c.vehicle_status_id INNER JOIN users us ON us.id=c.user_id INNER JOIN towns t ON t.id=us.town_id WHERE c.id=?";
 
     $stmt = $pdo->prepare($query);
 
@@ -249,8 +249,53 @@ if(isset($_GET['id'])){
                     </table>
                 </div>
             </div>
+
+            <div class="d-none d-lg-block col-lg-4">
+                <div class="row">
+                    <div class="card w-100 mb-3 text-center rounded shadow-box m-0">
+                        <div class="card-body p-0">
+                            <p class="h2 font-weight-bold align-middle py-4 mb-0"><?php echo number_format($row['price'] , 0, ',', '.') . " €" ?></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 shadow-box rounded px-0">
+                        <div class="bg-blue rounded-top w-100 py-2 px-0 font-weight-bold text-white text-center">Prodajalec</div>
+                        <ul class="list-group list-group-flush bg-white p-0 pb-1 rounded-bottom text-center">
+                            <li class="list-group-item p-0 text-muted font-weight-bold h3 m-2 border-bottom-0"><?php echo $row['seller'] ?></li>
+                            <li class="list-group-item text-muted h6 border-bottom-0">Telefon:</li>
+                            <li class="list-group-item pt-0"><a href="tel:<?php echo $row['phone']; ?>" class="font-weight-bold"><p class="h4 font-weight-bold m-0 text-dark"><?php echo $row['phone']; ?></p></a></li>
+                            <li class="list-group-item">
+                                <a href="mailto:<?php echo $row['email']; ?>" class="btn btn-block py-0 text-white orange-bg">
+                                    <i class="fa fa-envelope px-3"></i>
+                                    <span class="font-weight-bold text-left">Pošlji e-mail prodajalcu</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
         </div>
-    </div> 
+    </div>
+
+    <div class="container bg-white rounded shadow-box my-3 pb-2">
+        <div class="row px-1 pt-2">
+            <div class="col-12">
+                <h5 class="font-weight-bold">Cena:</h5>
+            </div>
+
+        </div>
+        <div class="row px-1">
+            <div class="col-12">
+                <div class="card h-100 text-center">
+                    <div class="card-body p-0">
+                        <p class="h1 font-weight-bold align-middle pt-4"><?php echo number_format($row['price'] , 0, ',', '.') . " €" ?></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 
