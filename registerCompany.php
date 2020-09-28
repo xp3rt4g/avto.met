@@ -11,7 +11,7 @@ include_once 'header.php';
     <div class="container bg-white rounded-bottom shadow-box m-0 mb-3">
         <div class="row pt-3 pb-2 px-3">
             <div class="col-12 px-0">
-                <h3 class="blue"><strong>Registracija novega posameznika</strong></h3>
+                <h3 class="blue"><strong>Registracija novega trgovca</strong></h3>
             </div>
         </div>
     </div>
