@@ -7,49 +7,59 @@
 <link rel="stylesheet" href="css/search.css">
 
 <body>
-<div class="container p-2">
+<div class="container p-0">
+<div class="container bg-white rounded-bottom shadow-box m-0 mb-3">
+        <div class="row pt-3 pb-2 px-3">
+            <div class="col-12 px-0">
+                <h3 class="blue"><strong>Rezultati iskanja</strong></h3>
+            </div>
+        </div>
+    </div>
 <?php 
 
     include 'connect.php';
 
     if(isset($_POST['search_type'])){
         $search_type = $_POST['search_type'];
+
+        if($search_type == "simple"){
     
 
-        if(isset($_POST['manufacturer']) && isset($_POST['model']) && isset($_POST['priceFrom']) && isset($_POST['priceTo']) && isset($_POST['yearMin']) && isset($_POST['yearMax']) && isset($_POST['kmMax']) && isset($_POST['fuelType'])){
+            if(isset($_POST['manufacturer']) && isset($_POST['model']) && isset($_POST['priceFrom']) && isset($_POST['priceTo']) && isset($_POST['yearMin']) && isset($_POST['yearMax']) && isset($_POST['kmMax']) && isset($_POST['fuelType'])){
 
-            $manufacturer_id = $_POST['manufacturer'];
-            $model_id = $_POST['model'];
-            $priceFrom = $_POST['priceFrom'];
-            $priceTo = $_POST['priceTo'];
-            $yearMin = $_POST['yearMin'];
-            $yearMax = $_POST['yearMax'];
-            $kmMax = $_POST['kmMax'];
-            $fuel_type_id = $_POST['fuelType'];
+                $manufacturer_id = $_POST['manufacturer'];
+                $model_id = $_POST['model'];
+                $priceFrom = $_POST['priceFrom'];
+                $priceTo = $_POST['priceTo'];
+                $yearMin = $_POST['yearMin'];
+                $yearMax = $_POST['yearMax'];
+                $kmMax = $_POST['kmMax'];
+                $fuel_type_id = $_POST['fuelType'];
 
 
-            include_once 'connect.php';
+                include_once 'connect.php';
 
-            $query = "SELECT c.*, m.name AS model, man.name AS manufacturer, ft.name AS fueltype, g.name AS gearbox, i.url AS url FROM cars c INNER JOIN fuel_types ft ON ft.id=c.fuel_type_id INNER JOIN gearboxes g ON g.id = c.gearbox_id INNER JOIN models m ON m.id=c.model_id INNER JOIN manufacturers man ON man.id=m.manufacturer_id INNER JOIN cars_images ci ON c.id=ci.car_id INNER JOIN images i ON i.id=ci.image_id  WHERE c.mileage <= $kmMax AND c.manufacture_year >= $yearMin 
-            AND c.manufacture_year <= $yearMax AND c.price <= $priceTo AND c.price >= $priceFrom ";
+                $query = "SELECT c.*, m.name AS model, man.name AS manufacturer, ft.name AS fueltype, g.name AS gearbox, i.url AS url FROM cars c INNER JOIN fuel_types ft ON ft.id=c.fuel_type_id INNER JOIN gearboxes g ON g.id = c.gearbox_id INNER JOIN models m ON m.id=c.model_id INNER JOIN manufacturers man ON man.id=m.manufacturer_id INNER JOIN cars_images ci ON c.id=ci.car_id INNER JOIN images i ON i.id=ci.image_id  WHERE c.mileage <= $kmMax AND c.manufacture_year >= $yearMin 
+                AND c.manufacture_year <= $yearMax AND c.price <= $priceTo AND c.price >= $priceFrom ";
             
-            if($model_id != "all")
-            {
-                $query .= "AND m.id = $model_id ";
-            } 
-            elseif($manufacturer_id != "all")
-            { 
-                $query .= "AND m.manufacturer_id = $manufacturer_id " ;
-            };
+                if($model_id != "all")
+                {
+                    $query .= "AND m.id = $model_id ";
+                } 
+                elseif($manufacturer_id != "all")
+                { 
+                    $query .= "AND m.manufacturer_id = $manufacturer_id " ;
+                };
 
-            if($fuel_type_id != "all"){
-                $query .= "AND c.fuel_type_id = $fuel_type_id ";
-            }
+                if($fuel_type_id != "all"){
+                    $query .= "AND c.fuel_type_id = $fuel_type_id ";
+                }
 
-            $query .= "ORDER BY c.date_posted;";
+                $query .= "ORDER BY c.date_posted;";
 
-
+        }
             ?>
+            
 
             <div class="col-12">
 
@@ -66,7 +76,7 @@
                 
                 <div class="row bg-white mb-3 pb-3 pb-sm-0 position-relative results-row center shadow-dark">
 
-                    <a href="ads?id=<?php echo $row['id'] ?>" class="stretched-link"></a>
+                    <a href="ads.php?id=<?php echo $row['id'] ?>" class="stretched-link"></a>
 
                     <div class ="bg-dark px-3 py-2 font-weight-bold text-truncate text-white text-decoration-none results-title"><?php echo $row['type'] ?></div>
 
