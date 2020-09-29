@@ -1,5 +1,14 @@
 <?php 
-session_start();
-echo $_SESSION['user_id'];
+
+include_once 'header.php';
+
+if(isset($_SESSION['user_id']) && isset($_SESSION['user_type'])){
+    
+    echo $_SESSION['user_id'];
+
+}
+else{
+    header("Location: login.php");
+}
 
 ?>

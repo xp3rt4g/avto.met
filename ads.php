@@ -106,7 +106,7 @@ if(isset($_GET['id'])){
                             </tr>
                             <tr>
                                 <th scope="row" class="font-weight-normal">Barva:</th>
-                                <td><strong><?php echo $row['color'] ?></strong></td>
+                                <td><strong><?php echo $row['color']; if($row['metallic'] == 1){ echo " - metallic";}?></strong></td>
                             </tr>
                             <tr>
                                 <th scope="row" class="font-weight-normal">Kraj ogleda:</th>
@@ -228,6 +228,9 @@ if(isset($_GET['id'])){
                                         <?php if($row['crashed'] == 1){ echo "<li>vozilo je KARAMBOLIRANO</li>"; } ?>
                                         <?php if($row['slovenian'] == 1){ echo "<li>slovensko poreklo</li>"; } ?>
                                         <?php if($row['garaged'] == 1){ echo "<li>garažirano</li>"; } ?>
+                                        <?php if($row['has_warranty'] == 1){ echo "<li>ima garancijo</li>"; } ?>
+                                        <?php if($row['has_guarranty'] == 1){ echo "<li>ima jamstvo</li>"; } ?>
+                                        <?php if($row['oldtimer'] == 1){ echo "<li>ima certifikat OLDTIMERJA</li>"; } ?>
                                         <li><?php echo $row['owner_number'] ?></li>
                                     </ul>
                                 </td>
@@ -295,7 +298,16 @@ if(isset($_GET['id'])){
                 </div>
             </div>
         </div>
+        <?php if($row['cash_discount'] == 1 || $row['last_price'] == 1 || $row['avaliable'] == 1){
+
+        ?>
+
+        <div class="row px-4 pt-2 pb-1">
+            <div class="col-12 alert bg-light mb-0 text-center"><?php if($row['cash_discount'] == 1 ){ echo "gotovinski popust - "; } if($row['last_price'] == 1 ){ echo "zadnja cena - "; } if($row['avaliable'] == 1 ){ echo "na zalogi"; } ?></div>
+        </div>
     </div>
+
+<?php } ?>
 
     <div class="container bg-white rounded shadow-box my-3 p-0 pb-2">
        <div class="row m-0 p-0 rounded">

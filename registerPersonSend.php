@@ -50,8 +50,17 @@ if(isset($_POST['name']) && isset($_POST['postCode']) && isset($_POST['street'])
 
         $stmt = $pdo->prepare($query);
         $stmt->execute([$name, $title, $street, $phone, $email, $password, $postCode]);
-        $_SESSION['successRegister'] = 1;
-        header("Location: login.php");
+        
+        $query = "SELECT u.id, u.name, at.name AS acc_type FROM users u INNER JOIN account_types at ON at.id=u.account_type_id WHERE u.email=?";
+        $stmt = $pdo->prepare($query);
+        $stmt->execute([$email]);
+
+        $row = $stmt->fetch();
+        $_SESSION['user_id'] = $row['id'];
+        $_SESSION['user_type'] = $user['acc_type'];
+        $_SESSION['user_name'] = $row['name'];
+
+        header("Location: homepage.php");
         }
     }
     else{

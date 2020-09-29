@@ -18,6 +18,7 @@
             if(password_verify($password, $user['pass'])){
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['user_type'] = $user['account_type_id'];
+                $_SESSION['user_name'] = $user['seller_title'];
                 header("Location: homepage.php");
                 die();
             }

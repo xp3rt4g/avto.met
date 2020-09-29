@@ -34,8 +34,18 @@
                     </div>
                     <div class="d-none d-md-block col-8 moj-menu p-0 m-0">
                     <ul>
+                    <?php if(isset($_SESSION['user_id']) && isset($_SESSION['user_name']) && isset($_SESSION['user_type'])){ ?>
+                      <div class="loggedin">
+                      <li class="uporabnik rounded-bottom">
+                        <a href="homepage.php"><span>Prijavljeni ste kot: <strong><?php echo $_SESSION['user_name'] ?></strong></span></a>
+                        <a href="logout.php"><span>Kliknite <strong>TUKAJ</strong> za odjavo</span></a>
+                      </li>
+                      </div>
+                    <?php }
+
+                    else{ ?>
                       <li>
-                         <a target="_blank" href="add_ad.php">
+                         <a href="add_ad.php">
                           <span class="moj-menu-hover mx-1 px-1">
                           <i class="fa fa-plus-circle mx-1"></i>
                           Objavi oglas
@@ -43,21 +53,14 @@
                           </a>
                       </li>
                       <li>
-                         <a href="parked.php" target="_blank">
-                          <span class="moj-menu-hover mx-1 px-1">
-                          <i class="fa fa-star mx-1"></i>
-                          Parkirano
-                          </span>
-                        </a>
-                      </li>
-                      <li>
-                         <a href="login.php" target="_blank">
+                         <a href="login.php">
                           <span class="moj-menu-dark mx-1 px-2">
                           <i class="fa fa-user mx-1"></i>
                           moj.avto.met
                           </span>
                           </a>
                       </li>
+                      <?php } ?>
                     </ul>                
                     </div>
                 </div>
@@ -68,6 +71,11 @@
             <ul class="p-0 m-0">
             <li><a href="index.php" rel="submenuHOME" class="first"><span class="first"><i class="fa fa-home fa-lg"></i></span></a></li>
             <li><a href="car_search.php" rel="submenuAVTO"><span>Išči avte</span></a></li>
+            <?php if(isset($_SESSION['user_id']) && isset($_SESSION['user_name']) && isset($_SESSION['user_type'])){ ?>
+              <li class="float-right"><a href="logout.php"><span>Odjava</span></a></li>
+              <li class="float-right"><a href="add_ad.php"><span>Objavi oglas</span></a></li>
+              <li class="float-right"><a href="homepage.php"><span>moj.avto.met</span></a></li>
+            <?php } ?>
             </ul>
         </div>
        </div>

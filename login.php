@@ -2,6 +2,10 @@
 
     include 'header.php';
 
+    if(isset($_SESSION['user_id']) && isset($_SESSION['user_name']) && isset($_SESSION['user_type'])){
+        header("Location: homepage.php");
+    }
+    else{
 ?>
 <link rel="stylesheet" href="css/login.css">
 
@@ -147,4 +151,4 @@ function showPass() {
 
 </script>
 
-<?php include_once 'footer.php'; ?>
+<?php } include_once 'footer.php'; ?>
