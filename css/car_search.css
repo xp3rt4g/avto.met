@@ -18,6 +18,19 @@ body{
     color: #FFFFFF;
 }
 
+.orange-bg i{
+    float: left;
+    height: 100%;
+    width: 50px;
+    line-height: 34px;
+    font-size: 15px;
+    padding: 0px;
+    border-style: solid;
+    border-width: 0px 1px 0px 0px;
+    border-color: #7F9DB9;
+    text-align: center;
+}
+
 .container {
     max-width: 972px;
 }
