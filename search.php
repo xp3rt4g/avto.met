@@ -24,9 +24,8 @@
 
         if($search_type == "simple"){
     
-
             if(isset($_GET['manufacturer']) && isset($_GET['model']) && isset($_GET['priceFrom']) && isset($_GET['priceTo']) && isset($_GET['yearMin']) && isset($_GET['yearMax']) && isset($_GET['kmMax']) && isset($_GET['fuelType'])){
-
+                
                 $manufacturer_id = $_GET['manufacturer'];
                 $model_id = $_GET['model'];
                 $priceFrom = $_GET['priceFrom'];
@@ -57,6 +56,106 @@
 
                 $query .= "ORDER BY c.date_posted;";
 
+            }
+            }
+            elseif($search_type == "advanced"){
+                if(isset($_GET['manufacturer']) && isset($_GET['model']) && isset($_GET['priceFrom']) && isset($_GET['priceTo']) && isset($_GET['yearMin']) && isset($_GET['yearMax']) && isset($_GET['kmMin']) && isset($_GET['kmMax']) && isset($_GET['gearbox']) && isset($_GET['fuelType'])  && isset($_GET['ccmMin'])  && isset($_GET['ccmMax'])  && isset($_GET['kwMin'])  && isset($_GET['kwMax']) && isset($_GET['adAge'])  && isset($_GET['sellerType']) && isset($_GET['sellerLocation'])){
+    
+                    $manufacturer_id = $_GET['manufacturer']; #
+                    $model_id = $_GET['model']; # 
+                    $priceFrom = $_GET['priceFrom']; #
+                    $priceTo = $_GET['priceTo']; #
+                    $yearMin = $_GET['yearMin']; #
+                    $yearMax = $_GET['yearMax']; #
+                    $kmMin = $_GET['kmMin']; #
+                    $kmMax = $_GET['kmMax']; #
+                    $gearbox_id = $_GET['gearbox'];#
+                    $fuel_type_id = $_GET['fuelType']; #
+                    $ccmMin = $_GET['ccmMin']; #
+                    $ccmMax = $_GET['ccmMax']; #
+                    $kwMin = $_GET['kwMin']; #
+                    $kwMax = $_GET['kwMax']; #
+                    $adAge = $_GET['adAge']; #
+                    $sellerType = $_GET['sellerType']; #
+                    $sellerLocation = $_GET['sellerLocation']; #
+    
+    
+                    $query = "SELECT c.*, m.name AS model, man.name AS manufacturer, ft.name AS fueltype, g.name AS gearbox, i.url AS url FROM cars c INNER JOIN vehicle_status vs ON vs.id=c.vehicle_status_id INNER JOIN fuel_types ft 
+                    ON ft.id=c.fuel_type_id INNER JOIN gearboxes g ON g.id = c.gearbox_id INNER JOIN models m ON m.id=c.model_id INNER JOIN manufacturers man ON 
+                    man.id=m.manufacturer_id INNER JOIN images i ON i.car_id=c.id INNER JOIN users us ON us.id=c.user_id INNER JOIN towns tow ON tow.id=us.town_id 
+                    WHERE c.price < $priceTo AND c.price > $priceFrom 
+                    AND c.manufacture_year < $yearMax AND c.manufacture_year > $yearMin AND c.mileage < $kmMax AND c.mileage > $kmMin AND c.ccm < $ccmMax AND c.ccm > $ccmMin 
+                    AND c.power < $kwMax AND c.power > $kwMin";
+    
+                    if($gearbox_id != "all"){
+                        $query .= " AND c.gearbox_id = $gearbox_id";
+                    }
+                    if($fuel_type_id != "all"){
+                        $query .= " AND c.fuel_type_id = $fuel_type_id";
+                    }
+                    if($sellerType != "all"){
+                        $query .= " AND us.account_type_id = $sellerType";
+                    }
+                    if($sellerLocation != "all"){
+                        $query .= " AND tow.post_number IN '$sellerLocation%'";
+                    }
+                    if($model_id != "all"){
+                        $query .= " AND m.id = $model_id";
+                    }
+                    if($manufacturer_id != "all"){
+                        $query .= "AND m.manufacturer_id = $manufacturer_id";
+                    }
+                    if($adAge != "all"){
+                        if($adAge == "day")
+                            $query .= " AND c.date_posted>='".date('Y-m-d')."'";
+                        elseif($adAge == "week"){
+                            $day = date('w');
+                            $week_start = date('Y-m-d', strtotime('-'.$day.' days'));
+                            $query .= " AND c.date_posted>='$week_start'";
+                        }
+                        elseif($adAge == "month"){
+                            $days = date('d');
+                            $days = $days - 1;
+                            $month_start = date('Y-m-d', strtotime('-'.$days.' days'));
+                            $query .= " AND c.date_posted>='$month_start'";
+                        }
+                    }
+
+                    if(isset($_GET['novo']) && isset($_GET['testno']) && isset($_GET['rabljeno'])){
+
+                    }
+                    elseif(isset($_GET['novo']) && isset($_GET['testno'])){
+                        $query .= " AND vs.name != 'Rabljen'";
+                    }
+                    elseif(isset($_GET['novo']) && isset($_GET['rabljeno'])){
+                        $query .= " AND vs.name != 'Testni'";
+                    }
+                    elseif(isset($_GET['testno']) && isset($_GET['rabljeno'])){
+                        $query .= " AND vs.name != 'Nov'";
+                    }
+                    elseif(isset($_GET['novo'])){
+                        $query .= " AND vs.name = 'Nov'";
+                    }
+                    elseif(isset($_GET['rabljeno'])){
+                        $query .= " AND vs.name = 'Rabljen'";
+                    }
+                    elseif(isset($_GET['testno'])){
+                        $query .= " AND vs.name = 'Testni'";
+                    }
+
+                    if(isset($_GET['car_type'])){
+                        $car_type = $_GET['car_type'];
+                        if($car_type != 'all'){
+                            $query .= " AND c.car_type_id = $car_type";
+                        }
+                    }
+                    
+                    
+                    $query .= " ORDER BY c.date_posted;";
+                    echo $query;
+                }
+                else{
+                    header("Location: car_search.php");
         }
             ?>
             
@@ -68,8 +167,16 @@
             
 
             <?php
+
             $stmt = $pdo->prepare($query);
             $stmt->execute();
+
+            if($stmt->rowCount() == 0){
+                echo "Žal ni rezultatov za vaše kriterije!";
+            }
+            else{
+
+            
 
             while ($row = $stmt->fetch()) {
                 ?> 
@@ -164,10 +271,13 @@
                 
                 <?php
             }
-
+        }
             
                         
         }
+    }
+    else{
+        header("Location: index.php");
     }
 
 ?>
