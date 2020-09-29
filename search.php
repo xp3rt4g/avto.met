@@ -97,13 +97,13 @@
                         $query .= " AND us.account_type_id = $sellerType";
                     }
                     if($sellerLocation != "all"){
-                        $query .= " AND tow.post_number IN '$sellerLocation%'";
+                        $query .= " AND tow.post_number LIKE '$sellerLocation%'";
                     }
                     if($model_id != "all"){
                         $query .= " AND m.id = $model_id";
                     }
                     if($manufacturer_id != "all"){
-                        $query .= "AND m.manufacturer_id = $manufacturer_id";
+                        $query .= " AND m.manufacturer_id = $manufacturer_id";
                     }
                     if($adAge != "all"){
                         if($adAge == "day")
@@ -149,10 +149,117 @@
                             $query .= " AND c.car_type_id = $car_type";
                         }
                     }
+
+                    if(isset($_GET['avaliable'])){
+                        $query .= " AND c.avaliable = 1";
+                    }
+
+                    if(isset($_GET['oldtimer'])){
+                        $query .= " AND c.oldtimer = 1";
+                    }
+
+                    if(isset($_GET['warranty'])){
+                        $query .= " AND c.has_warranty = 1";
+                    }
+
+                    if(isset($_GET['ac'])){
+                        $query .= " AND c.ac = 1";
+                    }
+
+                    if(isset($_GET['digital_ac'])){
+                        $query .= " AND c.digital_ac = 1";
+                    }
                     
+                    if(isset($_GET['keyless'])){
+                        $query .= " AND c.keyless_go = 1";
+                    }
+
+                    if(isset($_GET['headup'])){
+                        $query .= " AND c.headup = 1";
+                    }
+
+                    if(isset($_GET['navigation'])){
+                        $query .= " AND c.navigation = 1";
+                    }
+
+                    if(isset($_GET['cd_player'])){
+                        $query .= " AND c.cd_player = 1";
+                    }
+
+                    if(isset($_GET['mp3_player'])){
+                        $query .= " AND c.mp3_player = 1";
+                    }
+
+                    if(isset($_GET['dab'])){
+                        $query .= " AND c.dab = 1";
+                    }
+
+                    if(isset($_GET['electric_parking_brake'])){
+                        $query .= " AND c.electric_parking_brake = 1";
+                    }
+
+                    if(isset($_GET['fourwheel'])){
+                        $query .= " AND c.fourwheel = 1";
+                    }
+
+                    if(isset($_GET['abs'])){
+                        $query .= " AND c.abs = 1";
+                    }
                     
+                    if(isset($_GET['alarm'])){
+                        $query .= " AND c.alarm = 1";
+                    }
+
+                    if(isset($_GET['xenon'])){
+                        $query .= " AND c.xenon = 1";
+                    }
+
+                    if(isset($_GET['led'])){
+                        $query .= " AND c.led = 1";
+                    }
+
+                    if(isset($_GET['automatic_lights'])){
+                        $query .= " AND c.automatic_lights = 1";
+                    }
+
+                    if(isset($_GET['emergency_brake'])){
+                        $query .= " AND c.emergency_brake = 1";
+                    }
+
+                    if(isset($_GET['cruise_control'])){
+                        $query .= " AND c.cruise_control = 1";
+                    }
+
+                    if(isset($_GET['hill_assist'])){
+                        $query .= " AND c.hill_assist = 1";
+                    }
+
+                    if(isset($_GET['pdc'])){
+                        $query .= " AND c.pdc = 1";
+                    }
+
+                    if(isset($_GET['rear_camera'])){
+                        $query .= " AND c.rear_camera = 1";
+                    }
+
+                    if(isset($_GET['service_book'])){
+                        $query .= " AND c.service_book = 1";
+                    }
+                    
+                    if(isset($_GET['slovenian'])){
+                        $query .= " AND c.slovenian = 1";
+                    }
+
+                    if(isset($_GET['garaged'])){
+                        $query .= " AND c.garaged = 1";
+                    }
+
+                    if(isset($_GET['cash_discount'])){
+                        $query .= " AND c.cash_discount = 1";
+                    }
+
                     $query .= " ORDER BY c.date_posted;";
-                    echo $query;
+                   # echo $query;
                 }
                 else{
                     header("Location: car_search.php");
