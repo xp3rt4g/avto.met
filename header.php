@@ -14,7 +14,7 @@
 </head>
 <body>
 
-<div class="container-fluid headerwrapper p-0">
+<div class="container-fluid headerwrapper p-sm-0 p-1">
     <div class="row m-0">
     	<div class="container headermid">
               <div class="row">
@@ -26,7 +26,7 @@
 
                     <div class="col-8 d-md-none moj-menu p-0 m-0 text-right">
                         
-                      <button class="navbar-toggler first-button border-0" type="button" data-toggle="offcanvas">
+                      <button class="navbar-toggler first-button border-0" onclick="changeClass()" type="button" data-toggle="offcanvas">
                           <div class="animated-icon1">
                               <span></span><span></span><span></span>
                             </div>
@@ -83,5 +83,39 @@
 
     
 </div>
+
+<div class="d-lg-none container-fluid offcanvas-collapse" id="hiddenHamburger">
+    <strong>
+      <?php if(isset($_SESSION['user_id']) && isset($_SESSION['user_name']) && isset($_SESSION['user_type'])){ ?>
+
+        <div class="row">
+          <div class="col-12 mt-2">
+            <a href="homepage.php" class="h6 black"><span>Prijavljeni ste kot: <strong><?php echo $_SESSION['user_name'] ?></strong></span></a>          </div>
+          <div class="col-12 mt-2">
+            <a href="homepage.php" class="btn btn-lg btn-block orange-bg text-white font-weight-bold"><i class="fa fa-user"></i><span class="float-left pl-3">Domov</span></a>
+          </div>
+          <div class="col-6 mt-2 pr-1 h-25">
+            <a href="add_ad.php" class="btn btn-lg btn-block orange-bg text-white font-weight-bold"><i class="fa fa-plus-circle"></i><span class="float-left pl-3">Nov oglas</span></a>
+          </div>
+          <div class="col-6 mt-2 pl-1 h-25">
+            <a href="logout.php" class="btn btn-lg btn-block orange-bg text-white font-weight-bold"><i class="fa fa-sign-out"></i><span class="float-left pl-3">Odjava</span></a>
+          </div>
+        </div>
+
+     <?php }
+      else{ ?>
+      <div class="row">
+          <div class="col-12 mt-2">
+              <a href="homepage.php" class="btn btn-lg btn-block orange-bg text-white font-weight-bold"><i class="fa fa-user"></i><span class="float-left pl-3">Prijava v moj.avto.met</span></a>
+          </div>
+      </div>
+      <?php } ?>
+    </strong>
+</div>
 </body>
 </html>
+<script>
+  function changeClass(){
+    document.getElementById("hiddenHamburger").classList.toggle('open');
+  }
+</script>

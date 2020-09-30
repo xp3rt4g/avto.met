@@ -482,7 +482,7 @@ include 'connect.php';
                                     <div class="state p-danger-o">
                                         <i class="icon fa fa-check"></i>
                                         <label class="form-check-label" for="ac">
-                                            klimatska naprava
+                                            klima
                                         </label>
                                     </div>
                             </div>

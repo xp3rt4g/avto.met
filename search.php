@@ -58,7 +58,7 @@
 
             }
             }
-            elseif($search_type == "advanced"){
+        elseif($search_type == "advanced"){
                 if(isset($_GET['manufacturer']) && isset($_GET['model']) && isset($_GET['priceFrom']) && isset($_GET['priceTo']) && isset($_GET['yearMin']) && isset($_GET['yearMax']) && isset($_GET['kmMin']) && isset($_GET['kmMax']) && isset($_GET['gearbox']) && isset($_GET['fuelType'])  && isset($_GET['ccmMin'])  && isset($_GET['ccmMax'])  && isset($_GET['kwMin'])  && isset($_GET['kwMax']) && isset($_GET['adAge'])  && isset($_GET['sellerType']) && isset($_GET['sellerLocation'])){
     
                     $manufacturer_id = $_GET['manufacturer']; #
@@ -263,7 +263,7 @@
                 }
                 else{
                     header("Location: car_search.php");
-        }
+            }
             ?>
             
 
@@ -274,6 +274,7 @@
             
 
             <?php
+
 
             $stmt = $pdo->prepare($query);
             $stmt->execute();
