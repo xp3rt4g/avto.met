@@ -8,6 +8,8 @@
     else{
 ?>
 <link rel="stylesheet" href="css/login.css">
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<meta name="google-signin-client_id" content="1007474745237-2i1sbckbk1m0j1e4diaspqj19no1fjtk.apps.googleusercontent.com">
 
 
 <div class="container p-0">
@@ -97,7 +99,18 @@
                     <i class="fa fa-user px-2 py-2"></i>
                     <span class="px-3 py-2 float-left">Prijava</span>
                 </button>
+                
+                <div class="row">
+                
+                
 
+                <div class="g-signin2 col-5" data-onsuccess="onSignIn"></div>
+
+                
+                <div class="fb-login-button col-7" data-size="medium" data-button-type="continue_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="true" data-width=""></div>
+
+                </div> 
+                
                 <a href="forgottenPassword.php">
                     <span class="black">
                         Pozabljeno geslo?
@@ -147,6 +160,14 @@ function showPass() {
   } else {
     x.type = "password";
   }
+}
+
+function onSignIn(googleUser) {
+  var profile = googleUser.getBasicProfile();
+  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+  console.log('Name: ' + profile.getName());
+  console.log('Image URL: ' + profile.getImageUrl());
+  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
 }
 
 </script>
