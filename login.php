@@ -11,6 +11,48 @@
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 <meta name="google-signin-client_id" content="1007474745237-2i1sbckbk1m0j1e4diaspqj19no1fjtk.apps.googleusercontent.com">
 
+<body>
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/sl_SI/sdk.js#xfbml=1&version=v8.0&appId=372681983770383&autoLogAppEvents=1" nonce="kx4dPhqB"></script>
+
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '372681983770383',
+      cookie     : true,
+      xfbml      : true,
+      version    : 'v8.0'
+    });
+      
+    FB.AppEvents.logPageView();   
+      
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+
+
+   
+function checkLoginState() {
+  FB.getLoginStatus(function(response) {
+    if (response.status === 'connected') {
+    console.log(response.authResponse.accessToken);
+    FB.api('/me', { locale: 'si_SI', fields: 'name, email,birthday, hometown,education,gender,website,work' },
+          function(response) {
+            console.log(response.email);
+            console.log(response.name);
+          }
+        );
+  }
+  });
+}
+</script>
+
 
 <div class="container p-0">
     <div class="container bg-white rounded-bottom shadow-box m-0 mb-3">
@@ -107,7 +149,11 @@
                 <div class="g-signin2 col-5" data-onsuccess="onSignIn"></div>
 
                 
-                <div class="fb-login-button col-7" data-size="medium" data-button-type="continue_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="true" data-width=""></div>
+                <div class="fb-login-button col-7" data-size="medium" data-button-type="continue_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false" data-width="">
+<fb:login-button 
+  scope="public_profile,email"
+  onlogin="checkLoginState();">
+</fb:login-button></div>
 
                 </div> 
                 
@@ -171,5 +217,5 @@ function onSignIn(googleUser) {
 }
 
 </script>
-
+</body>
 <?php } include_once 'footer.php'; ?>
