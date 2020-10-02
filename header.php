@@ -24,7 +24,7 @@
                     <img name="Avto.net" src="img/logo.png" alt="www.avto.met" class="logo"/>                            </a>
                    </div>
 
-                    <div class="col-8 d-md-none moj-menu p-0 m-0 text-right">
+                    <div class="col-8 d-lg-none d-block moj-menu p-0 m-0 text-right">
                         
                       <button class="navbar-toggler first-button border-0" onclick="changeClass()" type="button" data-toggle="offcanvas">
                           <div class="animated-icon1">
@@ -32,7 +32,7 @@
                             </div>
                       </button>
                     </div>
-                    <div class="d-none d-md-block col-8 moj-menu p-0 m-0">
+                    <div class="d-none d-lg-block col-8 moj-menu p-0 m-0">
                     <ul>
                     <?php if(isset($_SESSION['user_id']) && isset($_SESSION['user_name']) && isset($_SESSION['user_type'])){ ?>
                       <div class="loggedin">
