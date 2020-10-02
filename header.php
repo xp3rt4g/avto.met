@@ -75,7 +75,11 @@
               <li class="float-right"><a href="logout.php"><span>Odjava</span></a></li>
               <li class="float-right"><a href="add_ad.php"><span>Objavi oglas</span></a></li>
               <li class="float-right"><a href="homepage.php"><span>moj.avto.met</span></a></li>
-            <?php } ?>
+            <?php 
+          if($_SESSION['user_type'] == 'Admin'){
+            ?> <li class="float-right"><a href="admin.php"><span>Admin</span></a></li> <?php
+          }
+          } ?>
             </ul>
         </div>
        </div>
