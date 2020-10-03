@@ -44,14 +44,7 @@
                     <?php }
 
                     else{ ?>
-                      <li>
-                         <a href="add_ad.php">
-                          <span class="moj-menu-hover mx-1 px-1">
-                          <i class="fa fa-plus-circle mx-1"></i>
-                          Objavi oglas
-                          </span>
-                          </a>
-                      </li>
+                      
                       <li>
                          <a href="login.php">
                           <span class="moj-menu-dark mx-1 px-2">
