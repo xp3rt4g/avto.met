@@ -64,15 +64,19 @@ function checkLoginState() {
     </div>
     <?php
 
-    if(isset($_SESSION['successRegister'])){
-        $success = $_SESSION['successRegister'];
+    if(isset($_SESSION['err'])){
 
-        if($success == 1){
-            echo "<div class='alert alert-success' role='alert'>
-                Uspešno ste se registrirali na avto.met. Lahko nadaljujete s prijavo!
-            </div>";
-            $success = NULL;
-            $_SESSION['successRegister'] = NULL;
+        if($_SESSION['err'] == 5){
+            echo "<div class='alert alert-danger' role='alert'>
+            Uporabnik s takim e-mailom ne obstaja!
+        </div>";
+        unset($_SESSION['err']);
+        }
+        elseif($_SESSION['err'] == 6){
+            echo "<div class='alert alert-danger' role='alert'>
+            Napačno geslo!
+        </div>";
+        unset($_SESSION['err']);
         }
     }
 
@@ -150,10 +154,10 @@ function checkLoginState() {
 
                 
                 <div class="fb-login-button col-7" data-size="medium" data-button-type="continue_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false" data-width="">
-<fb:login-button 
-  scope="public_profile,email"
-  onlogin="checkLoginState();">
-</fb:login-button></div>
+                <fb:login-button 
+                    scope="public_profile,email"
+                    onlogin="checkLoginState();">
+                </fb:login-button></div>
 
                 </div> 
                 

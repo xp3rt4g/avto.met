@@ -22,6 +22,14 @@
                 header("Location: homepage.php");
                 die();
             }
+            else{
+                $_SESSION['err'] = 6;
+                header("Location: login.php");
+            }
+        }
+        else{
+            $_SESSION['err'] = 5;
+            header("Location: login.php");
         }
     }
 

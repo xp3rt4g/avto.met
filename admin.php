@@ -15,11 +15,6 @@ include_once 'header.php';
 
     <div class="container my-3 pb-2 bg-white shadow-box rounded">
         <div class="row pt-3">
-            <div class="col-sm-4 col-12">
-                <a href="editUsers.php" class="btn btn-lg btn-block orange-bg d-inline-block text-center py-0 mb-3">
-                    <span class="py-2">Urejanje uporabnikov</span>
-                </a>
-            </div>
 
             <div class="col-sm-4 col-12">
                 <a href="editUsers.php" class="btn btn-lg btn-block orange-bg text-center py-0 mb-3">
@@ -28,26 +23,32 @@ include_once 'header.php';
             </div>
 
             <div class="col-sm-4 col-12">
-                <a href="editUsers.php" class="btn btn-lg btn-block orange-bg text-center py-0 mb-3">
-                    <span class="px-3 py-2 text-center">Urejanje uporabnikov</span>
+                <a href="editCities.php" class="btn btn-lg btn-block orange-bg text-center py-0 mb-3">
+                    <span class="px-3 py-2 text-center">Urejanje mest</span>
+                </a>
+            </div>
+
+            <div class="col-sm-4 col-12">
+                <a href="editManufacturers.php" class="btn btn-lg btn-block orange-bg text-center py-0 mb-3">
+                    <span class="px-3 py-2 text-center">Urejanje znamk</span>
+                </a>
+            </div>
+
+            <div class="col-sm-4 col-12">
+                <a href="editModels.php" class="btn btn-lg btn-block orange-bg text-center py-0 mb-3">
+                    <span class="px-3 py-2 text-center">Urejanje modelov</span>
+                </a>
+            </div>
+
+            <div class="col-sm-4 col-12">
+                <a href="editColors.php" class="btn btn-lg btn-block orange-bg text-center py-0 mb-3">
+                    <span class="px-3 py-2 text-center">Urejanje barv</span>
                 </a>
             </div>
 
             <div class="col-sm-4 col-12">
                 <a href="editUsers.php" class="btn btn-lg btn-block orange-bg text-center py-0 mb-3">
-                    <span class="px-3 py-2 text-center">Urejanje uporabnikov</span>
-                </a>
-            </div>
-
-            <div class="col-sm-4 col-12">
-                <a href="editUsers.php" class="btn btn-lg btn-block orange-bg text-center py-0 mb-3">
-                    <span class="px-3 py-2 text-center">Urejanje uporabnikov</span>
-                </a>
-            </div>
-
-            <div class="col-sm-4 col-12">
-                <a href="editUsers.php" class="btn btn-lg btn-block orange-bg text-center py-0 mb-3">
-                    <span class="px-3 py-2 text-center">Urejanje uporabnikov</span>
+                    <span class="px-3 py-2 text-center">Urejanje oglasov</span>
                 </a>
             </div>
         </div>
