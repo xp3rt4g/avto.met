@@ -10,10 +10,6 @@ body{
     box-shadow: 0px 1px 2px 0px rgba(0,0,0,.5);
 }
 
-.results-row{
-    width: 728px;
-}
-
 .results-title{
     width: 100%;
 }
@@ -108,4 +104,33 @@ body{
     box-shadow: 0px 1px 2px 0px rgba(0,0,0,.5);
     -moz-box-shadow: 0px 1px 2px 0px rgba(0,0,0,.5);
     -webkit-box-shadow: 0 1px 2px 0 rgba(0,0,0,.5);
+}
+
+
+@media (min-width: 992px) 
+{
+.results-row {
+	width: 728px;
+}
+}
+/*  Medium devices (tablets, 768px and up)
+-------------------------------------------------- */
+@media (min-width: 768px) and (max-width: 991.98px)
+{
+.results-row {
+}
+}
+@media (min-width: 576px) and (max-width: 767.98px)
+{
+.results-row {
+}
+}
+/* display width less than 576
+-------------------------------------------------- */
+@media (max-width:575.98px) 
+{
+.results-row {
+    margin: auto;
+    margin-bottom: 2rem;
+}
 }

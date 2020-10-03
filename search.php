@@ -290,15 +290,15 @@
             while ($row = $stmt->fetch()) {
                 ?>
 
-            <div class="row bg-white mb-3 pb-3 pb-sm-0 position-relative results-row center shadow-dark">
+            <div class="row bg-white mb-3 pb-3 pb-sm-0 position-relative results-row center shadow-dark text-center">
 
                 <a href="ads.php?id=<?php echo $row['id'] ?>" class="stretched-link"></a>
 
                 <div
-                    class="bg-dark px-3 py-2 font-weight-bold text-truncate text-white text-decoration-none results-title">
+                    class="bg-dark col-12 px-3 py-2 font-weight-bold text-truncate text-white text-decoration-none results-title">
                     <?php echo $row['type'] ?></div>
 
-                <div class="col-auto px-3 py-0 py-sm-3 pt-3 photo d-flex justify-content-center align-items-center">
+                <div class="col-auto px-3 py-0 py-sm-3 pt-3 photo d-flex justify-content-center align-items-center m-auto">
 
                     <div class="photo-display align-self-center">
 
@@ -308,7 +308,7 @@
 
                 </div>
 
-                <div class="col-auto py-0 results-top-data pb-lg-3 mt-0 mt-sm-3 mr-0 pr-0">
+                <div class="col-auto py-0 results-top-data pb-lg-3 mt-md-0 mt-md-3 mr-sm-0 pr-0 m-auto">
 
                     <div class="p-0 m-0 pl-3 pr-3">
 

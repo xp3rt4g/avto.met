@@ -262,7 +262,7 @@ include_once './header.php';
 
                 <div class="form-row pt-2 pb-3">
                 
-                    <div class="col-md-8 d-none d-md-block">
+                    <div class="col-12 col-md-8 d-md-block">
                         <a class="btn btn-outline-light btn-block text-left border h-100" href="car_search.php">
                             <i class="fa fa-sliders fa-lg align-middle pr-2 orange"></i>
                             <span class="align-middle text-truncate black">Napredno iskanje z filtri</span>
