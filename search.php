@@ -296,7 +296,7 @@
 
                 <div
                     class="bg-dark col-12 px-3 py-2 font-weight-bold text-truncate text-white text-decoration-none results-title">
-                    <?php echo $row['type'] ?></div>
+                    <?php echo $row['manufacturer']. " " . $row['model'] . " " . $row['type'] ?></div>
 
                 <div class="col-auto px-3 py-0 py-sm-3 pt-3 photo d-flex justify-content-center align-items-center m-auto">
 

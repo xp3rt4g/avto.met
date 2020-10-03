@@ -245,7 +245,7 @@ include 'connect.php';
 
                         <div class="col-12 col-sm-4 p-0 pt-1 font-weight-normal">
                             <div class="form-check pretty p-icon p-rotate ml-sm-4">
-                                <input name="avaliable" class="form-check-input" type="checkbox" value="1" id="avaliable">
+                                <input name="avaliable" class="form-check-input" type="checkbox" checked="checked" value="1" id="avaliable">
                                 <div class="state p-danger-o">
                                     <i class="icon fa fa-check"></i>
                                     <label class="form-check-label" for="avaliable">

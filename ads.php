@@ -15,7 +15,7 @@ if(isset($_GET['id'])){
 
     $id_car  = $_GET['id'];
 
-    $query = "SELECT c.*, us.seller_title AS seller, us.phone AS phone, us.email AS email, i.url, t.name AS town, t.post_number, col.name AS color, noo.name AS owner_number, vs.name AS status, ft.name AS fuel, gr.name AS gearbox FROM cars c INNER JOIN number_of_owners noo ON noo.id=c.number_of_owner_id INNER JOIN colors col ON col.id=c.color_id INNER JOIN gearboxes gr ON gr.id=c.gearbox_id INNER JOIN fuel_types ft ON ft.id=c.fuel_type_id INNER JOIN images i ON i.car_id=c.id INNER JOIN vehicle_status vs ON vs.id=c.vehicle_status_id INNER JOIN users us ON us.id=c.user_id INNER JOIN towns t ON t.id=us.town_id WHERE c.id=?";
+    $query = "SELECT c.*, md.name AS model, man.name AS manufacturer, us.seller_title AS seller, us.phone AS phone, us.email AS email, i.url, t.name AS town, t.post_number, col.name AS color, noo.name AS owner_number, vs.name AS status, ft.name AS fuel, gr.name AS gearbox FROM cars c INNER JOIN models md ON md.id=c.model_id INNER JOIN manufacturers man ON man.id=md.manufacturer_id INNER JOIN number_of_owners noo ON noo.id=c.number_of_owner_id INNER JOIN colors col ON col.id=c.color_id INNER JOIN gearboxes gr ON gr.id=c.gearbox_id INNER JOIN fuel_types ft ON ft.id=c.fuel_type_id INNER JOIN images i ON i.car_id=c.id INNER JOIN vehicle_status vs ON vs.id=c.vehicle_status_id INNER JOIN users us ON us.id=c.user_id INNER JOIN towns t ON t.id=us.town_id WHERE c.id=?";
 
     $stmt = $pdo->prepare($query);
 
@@ -34,7 +34,7 @@ if(isset($_GET['id'])){
     <div class="container bg-white rounded-bottom shadow-box m-0 mb-3">
             <div class="row pt-3 pb-2 px-3">
                 <div class="col-12 px-0">
-                    <h3><?php echo $row['type'] ?></h3>
+                    <h3><?php echo $row['manufacturer'] . " ". $row['model']. " " . $row['type'] ?></h3>
                 </div>
             </div>
     </div>
