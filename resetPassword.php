@@ -2,7 +2,19 @@
 <?php
 include_once 'header.php';
 include 'connect.php';
+?>
 
+<div class="container p-0">
+    <div class="container bg-white rounded-bottom shadow-box m-0 mb-3">
+            <div class="row pt-3 pb-2 px-3">
+                <div class="col-12 px-0">
+                    <h3><strong>Nastavitev novega gesla!</strong></h3>
+                </div>
+            </div>
+    </div>
+
+    <div class="card rounded shadow-box px-4">
+<?php
 if (isset($_GET["key"]) && isset($_GET["email"]) && isset($_GET["action"]) 
 && ($_GET["action"]=="reset") && !isset($_POST["action"])){
   $key = $_GET["key"];
@@ -28,14 +40,14 @@ if (isset($_GET["key"]) && isset($_GET["email"]) && isset($_GET["action"])
   <form method="post" action="" name="update">
   <input type="hidden" name="action" value="update" />
   <br /><br />
-  <label><strong>Enter New Password:</strong></label><br />
-  <input type="password" name="pass1" maxlength="15" required />
+  <label><strong>Vnesite novo geslo:</strong></label><br />
+  <input type="password" name="pass1" maxlength="15" required class="form-control form-control-lg"/>
   <br /><br />
-  <label><strong>Re-Enter New Password:</strong></label><br />
-  <input type="password" name="pass2" maxlength="15" required/>
+  <label><strong>Potrdite novo geslo:</strong></label><br />
+  <input type="password" name="pass2" maxlength="15" required class="form-control form-control-lg"/>
   <br /><br />
   <input type="hidden" name="email" value="<?php echo $email;?>"/>
-  <input type="submit" value="Reset Password" />
+  <input type="submit" value="Nastavi geslo" class="btn btn-lg btn-block orange-bg text-center py-0 mb-3"/>
   </form>
 <?php
 }else{
@@ -82,3 +94,5 @@ header("Location: login.php");
    } 
 }
 ?>
+</div>
+</div>
