@@ -78,6 +78,26 @@ function checkLoginState() {
         </div>";
         unset($_SESSION['err']);
         }
+        elseif($_SESSION['err'] == 62){
+            echo "<div class='alert alert-danger' role='alert'>
+            Gesli se ne ujemata!
+        </div>";
+        unset($_SESSION['err']);
+        }
+    }
+    if(isset($_SESSION['success'])){
+        if($_SESSION['success'] == 1){
+           echo ' <div class="alert alert-success" role="alert">
+  Na e-mail smo vam poslali navodila za ponastavitev gesla!
+</div> ';
+unset($_SESSION['success']);
+        }
+        elseif($_SESSION['success'] == 1){
+            echo ' <div class="alert alert-success" role="alert">
+   Uspešno ste ponastavili geslo! Sedaj se lahko prijavite z novim geslom!
+ </div> ';
+ unset($_SESSION['success']);
+         }
     }
 
     ?>
@@ -161,7 +181,7 @@ function checkLoginState() {
 
                 </div> 
                 
-                <a href="forgottenPassword.php">
+                <a href="forgotPassEmail.php">
                     <span class="black">
                         Pozabljeno geslo?
                     </span>
