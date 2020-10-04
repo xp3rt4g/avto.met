@@ -92,7 +92,7 @@ function checkLoginState() {
 </div> ';
 unset($_SESSION['success']);
         }
-        elseif($_SESSION['success'] == 1){
+        elseif($_SESSION['success'] == 60){
             echo ' <div class="alert alert-success" role="alert">
    Uspešno ste ponastavili geslo! Sedaj se lahko prijavite z novim geslom!
  </div> ';
