@@ -173,11 +173,8 @@ unset($_SESSION['success']);
                 <div class="g-signin2 col-5" data-onsuccess="onSignIn"></div>
 
                 
-                <div class="fb-login-button col-7" data-size="medium" data-button-type="continue_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false" data-width="">
-                <fb:login-button 
-                    scope="public_profile,email"
-                    onlogin="checkLoginState();">
-                </fb:login-button></div>
+                <div class="fb-login-button col-5" scope="public_profile,email"
+                    onlogin="checkLoginState();" data-size="medium" data-button-type="continue_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false" data-width=""></div>                
 
                 </div> 
                 
