@@ -31,7 +31,7 @@ if(isset($_POST['manufacturer']) && isset($_POST['model']) && isset($_POST['door
     echo "<script>window.location.href='add_ad.php'</script>";
     $uploadOk = 0;
   }
-  if ($_FILES["image"]["size"] > 500000) {
+  if ($_FILES["image"]["size"] > 5000000) {
     $_SESSION['err'] = 13;
     echo "<script>window.location.href='add_ad.php'</script>";
     $uploadOk = 0;
