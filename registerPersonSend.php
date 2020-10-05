@@ -19,6 +19,15 @@ if(isset($_POST['legal2'])){
 };
 */
 
+function clean($string) {
+    $string = str_replace('>', '', $string);
+    $string = str_replace('<', '', $string);
+    $string = str_replace('=', '', $string);
+    $string = str_replace(';', '', $string);
+ 
+    return $string;
+ }
+
 if(isset($_POST['name']) && isset($_POST['postCode']) && isset($_POST['street']) && isset($_POST['title']) && isset($_POST['phone']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['passwordConfirm']) && isset($_POST['legal1']) && isset($_POST['legal2'])){
 
     if($_POST['password'] == $_POST['passwordConfirm']){
@@ -26,11 +35,16 @@ if(isset($_POST['name']) && isset($_POST['postCode']) && isset($_POST['street'])
         $_SESSION['successRegister'] = 1;
 
         $name = $_POST['name'];
+        $name = clean($name);
         $postCode = $_POST['postCode'];
         $street = $_POST['street'];
+        $street = clean($street);
         $title = $_POST['title'];
+        $title = clean($title);
         $phone = $_POST['phone'];
+        $phone = clean($phone);
         $email = $_POST['email'];
+        $email = clean($email);
         $password = $_POST['password'];
 
         $password = password_hash($password, PASSWORD_DEFAULT);

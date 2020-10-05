@@ -281,7 +281,9 @@
             $stmt->execute();
 
             if($stmt->rowCount() == 0){
-                echo "Žal ni rezultatov za vaše kriterije!";
+                echo '<div class="alert alert-primary" role="alert">
+                Za vaše kriterije ni rezultatov iskanja!
+              </div>';
             }
             else{
 

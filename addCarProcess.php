@@ -3,6 +3,15 @@
 include 'connect.php';
 session_start();
 
+function clean($string) {
+    $string = str_replace('>', '', $string);
+    $string = str_replace('<', '', $string);
+    $string = str_replace('=', '', $string);
+    $string = str_replace(';', '', $string);
+ 
+    return $string;
+}
+
 $target_dir = "user_img/";
 $target_file = $target_dir . basename($_FILES["image"]["name"]);
 $uploadOk = 1;
@@ -19,30 +28,30 @@ if(isset($_POST['manufacturer']) && isset($_POST['model']) && isset($_POST['door
     $uploadOk = 1;
   } else {
     $_SESSION['err'] = 12;
-    header("Location: add_ad.php");
+    echo "<script>window.location.href='add_ad.php'</script>";
     $uploadOk = 0;
   }
   if ($_FILES["image"]["size"] > 500000) {
     $_SESSION['err'] = 13;
-    header("Location: add_ad.php");
+    echo "<script>window.location.href='add_ad.php'</script>";
     $uploadOk = 0;
   }
   if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
     && $imageFileType != "gif" ) {
         $_SESSION['err'] = 15;
-        header("Location: add_ad.php");
+        echo "<script>window.location.href='add_ad.php'</script>";
         $uploadOk = 0;
     }
 
     if ($uploadOk == 0) {
         $_SESSION['err'] = 14;
-        header("Location: add_ad.php");
+        echo "<script>window.location.href='add_ad.php'</script>";
   // if everything is ok, try to upload file
     } else {
         if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
         } else {
           $_SESSION['err'] = 14;
-           header("Location: add_ad.php");
+          echo "<script>window.location.href='add_ad.php'</script>";
      }
      }
 
@@ -51,25 +60,36 @@ if(isset($_POST['manufacturer']) && isset($_POST['model']) && isset($_POST['door
     $manufacturer = $_POST['manufacturer'];
     $model = $_POST['model'];
     $type = $_POST['type'];
+    $type = clean($type);
     $car_type = $_POST['car_type'];
     $vehicle_status = $_POST['vehicle_status'];
     $manufacture_year = $_POST['manufacture_year'];
+    $manufacture_year = clean($manufacture_year);
     $first_registration = $_POST['first_registration'];
     $inspection_expiry = $_POST['inspection_expiry'];
     $color = $_POST['color'];
     $ownership = $_POST['ownership'];
     $mileage = $_POST['mileage'];
+    $mileage = clean($mileage);
     $comment = $_POST['comment'];
+    $comment = clean($comment);
     $fuel = $_POST['fuel'];
     $gearbox = $_POST['gearbox'];
     $power = $_POST['power'];
+    $power = clean($power);
     $ccm = $_POST['ccm'];
+    $ccm = clean($ccm);
     $consumption = $_POST['consumption'];
+    $consumption = clean($consumption);
     $price = $_POST['price'];
+    $price = clean($price);
     $user_id = $_SESSION['user_id'];
     $doors = $_POST['doors'];
+    $doors = clean($doors);
     $seats = $_POST['seats'];
+    $seats = clean($seats);
     $airbags = $_POST['airbags'];
+    $airbags = clean($airbags);
 
     if(isset($_POST['ac'])){
         $ac = 1;
@@ -297,7 +317,7 @@ if(isset($_POST['manufacturer']) && isset($_POST['model']) && isset($_POST['door
 }
 else{
     $_SESSION['err'] = 16;
-    header("Location: add_ad.php");
+    echo "<script>window.location.href='add_ad.php'</script>";
 }
 
 

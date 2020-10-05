@@ -99,6 +99,11 @@
           <div class="col-6 mt-2 pl-1 h-25">
             <a href="logout.php" class="btn btn-lg btn-block orange-bg text-white font-weight-bold"><i class="fa fa-sign-out"></i><span class="float-left pl-3">Odjava</span></a>
           </div>
+          <?php if($_SESSION['user_type'] == 'Admin'){ ?>
+          <div class="col-12 mt-2">
+            <a href="admin.php" class="btn btn-lg btn-block orange-bg text-white font-weight-bold"><i class="fa fa-user"></i><span class="float-left pl-3">Admin</span></a>
+          </div>
+      <?php } ?>
         </div>
 
      <?php }

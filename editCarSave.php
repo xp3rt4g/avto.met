@@ -3,31 +3,52 @@
 include 'connect.php';
 session_start();
 
+function clean($string) {
+    $string = str_replace('>', '', $string);
+    $string = str_replace('<', '', $string);
+    $string = str_replace('=', '', $string);
+    $string = str_replace(';', '', $string);
+ 
+    return $string;
+}
+
 if(isset($_POST['id']) && isset($_POST['manufacturer']) && isset($_POST['model']) && isset($_POST['doors']) && isset($_POST['seats']) && isset($_POST['airbags']) && isset($_POST['type']) && isset($_POST['car_type']) && isset($_POST['vehicle_status']) && isset($_POST['manufacture_year']) && isset($_POST['first_registration']) && isset($_POST['inspection_expiry']) && isset($_POST['color']) && isset($_POST['ownership']) && isset($_POST['mileage']) && isset($_POST['comment']) && isset($_POST['fuel']) && isset($_POST['gearbox']) && isset($_POST['power']) && isset($_POST['ccm']) && isset($_POST['consumption']) && isset($_POST['price']) && isset($_SESSION['user_id'])){
     
     $id = $_POST['id'];
+
     $manufacturer = $_POST['manufacturer'];
     $model = $_POST['model'];
     $type = $_POST['type'];
+    $type = clean($type);
     $car_type = $_POST['car_type'];
     $vehicle_status = $_POST['vehicle_status'];
     $manufacture_year = $_POST['manufacture_year'];
+    $manufacture_year = clean($manufacture_year);
     $first_registration = $_POST['first_registration'];
     $inspection_expiry = $_POST['inspection_expiry'];
     $color = $_POST['color'];
     $ownership = $_POST['ownership'];
     $mileage = $_POST['mileage'];
+    $mileage = clean($mileage);
     $comment = $_POST['comment'];
+    $comment = clean($comment);
     $fuel = $_POST['fuel'];
     $gearbox = $_POST['gearbox'];
     $power = $_POST['power'];
+    $power = clean($power);
     $ccm = $_POST['ccm'];
+    $ccm = clean($ccm);
     $consumption = $_POST['consumption'];
+    $consumption = clean($consumption);
     $price = $_POST['price'];
+    $price = clean($price);
     $user_id = $_SESSION['user_id'];
     $doors = $_POST['doors'];
+    $doors = clean($doors);
     $seats = $_POST['seats'];
+    $seats = clean($seats);
     $airbags = $_POST['airbags'];
+    $airbags = clean($airbags);
 
     if(isset($_POST['ac'])){
         $ac = 1;
