@@ -47,7 +47,7 @@ include_once 'header.php';
             </div>
 
             <div class="col-sm-4 col-12">
-                <a href="editUsers.php" class="btn btn-lg btn-block orange-bg text-center py-0 mb-3">
+                <a href="editAds.php" class="btn btn-lg btn-block orange-bg text-center py-0 mb-3">
                     <span class="px-3 py-2 text-center">Urejanje oglasov</span>
                 </a>
             </div>

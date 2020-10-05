@@ -7,3 +7,21 @@
 <!-- MDB core JavaScript -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.0/js/mdb.min.js"></script>
 
+<link rel="stylesheet" href="css/footer.css">
+
+<div class="d-none d-lg-block container-fluid Footer p-0">
+    <div class="row m-0 pt-4">
+        <div class="container p-0">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-5"></div>
+                    <div class="col-2">All rights reserved</div>
+                    <div class="col-5"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="d-block d-lg-none container-fluid Footer p-0"></div>

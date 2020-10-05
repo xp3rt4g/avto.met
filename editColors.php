@@ -2,6 +2,7 @@
 
 include_once 'header.php';
 
+if($_SESSION['user_type'] == 'Admin'){
 ?>
 
 <link rel="stylesheet" href="css/edit.css">
@@ -86,3 +87,10 @@ include_once 'header.php';
     </div>
 
 </div>
+<?php 
+
+}
+else{
+    header("Location: index.php");
+}
+?>

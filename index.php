@@ -284,10 +284,15 @@ include_once './header.php';
             </form>
         </div>
 
-</body>
+<footer id="footer">
 
 <?php 
 
 include_once './footer.php';
 
 ?>
+
+</footer>
+
+</body>
+
