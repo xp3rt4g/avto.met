@@ -27,6 +27,12 @@ include_once 'header.php'
         </div>";
         unset($_SESSION['err']);
         }
+        elseif($_SESSION['err'] == 55){
+            echo "<div class='alert alert-danger' role='alert'>
+            Račun je narejen z Facebook ali Google loginom.
+        </div>";
+        unset($_SESSION['err']);
+        }
     }
 
     ?>

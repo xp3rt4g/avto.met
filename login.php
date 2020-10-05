@@ -41,9 +41,17 @@
 function checkLoginState() {
   FB.getLoginStatus(function(response) {
     if (response.status === 'connected') {
-    console.log(response.authResponse.accessToken);
+   // console.log(response.authResponse.accessToken);
     FB.api('/me', { locale: 'si_SI', fields: 'name, email,birthday, hometown,education,gender,website,work' },
           function(response) {
+            var form = $('<form action="socialLogin.php" method="post">' +
+            '<input type="text" name="email" value="' + response.email + '" />'
+            +
+            '<input type="text" name="name" value="' + response.name + '" />'+
+            '</form>');
+            $('body').append(form);
+            form.submit();
+            
             console.log(response.email);
             console.log(response.name);
           }
@@ -81,6 +89,12 @@ function checkLoginState() {
         elseif($_SESSION['err'] == 62){
             echo "<div class='alert alert-danger' role='alert'>
             Gesli se ne ujemata!
+        </div>";
+        unset($_SESSION['err']);
+        }
+        elseif($_SESSION['err'] == 100){
+            echo "<div class='alert alert-danger' role='alert'>
+            Ta račun že obstaja in ni narejen z Facebook ali Google!
         </div>";
         unset($_SESSION['err']);
         }
@@ -170,7 +184,7 @@ unset($_SESSION['success']);
                 
                 
 
-                <div class="g-signin2 col-5" data-onsuccess="onSignIn"></div>
+               <div class="g-signin2 col-5" data-onsuccess="onSignIn"></div>
 
                 
                 <div class="fb-login-button col-5" scope="public_profile,email"
@@ -229,12 +243,22 @@ function showPass() {
   }
 }
 
+
 function onSignIn(googleUser) {
   var profile = googleUser.getBasicProfile();
   console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
   console.log('Name: ' + profile.getName());
   console.log('Image URL: ' + profile.getImageUrl());
   console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+  var form = $('<form action="socialLogin.php" method="post">' +
+            '<input type="text" name="email" value="' + profile.getEmail() + '" />'
+            +
+            '<input type="text" name="name" value="' + profile.getName() + '" />'+
+            '</form>');
+            gapi.auth2.getAuthInstance().disconnect().then(function () {
+            $('body').append(form);
+            form.submit();
+            }
 }
 
 </script>

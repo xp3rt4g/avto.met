@@ -16,6 +16,11 @@ if(isset($_POST["email"]) && (!empty($_POST["email"]))){
        $row = $stmt->fetch();
        if ($row==""){
        $_SESSION['err'] = 50;
+       $error = "prazno";
+       }
+       if($row['pass'] == 'social'){
+           $_SESSION['err'] = 55;
+           $error = "fb ali google";
        }
       }
        if($error!=""){
