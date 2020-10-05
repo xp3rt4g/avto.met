@@ -255,10 +255,9 @@ function onSignIn(googleUser) {
             +
             '<input type="text" name="name" value="' + profile.getName() + '" />'+
             '</form>');
-            gapi.auth2.getAuthInstance().disconnect().then(function () {
             $('body').append(form);
             form.submit();
-            }
+            gapi.auth2.getAuthInstance().disconnect()  
 }
 
 </script>
