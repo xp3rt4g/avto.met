@@ -94,7 +94,7 @@ include_once 'header.php';
                     <?php echo $row['acc_type']; ?>
                     </td>
                     <td>
-                    <a href="deleteUser.php?id=<?php echo $row['id']; ?>"><i class="fa fa-times fa-2x text-danger"></i></a>
+                    <a href="deleteUser.php?id=<?php echo $row['id']; ?>" onclick="return  confirm('Ali res želite izbrisati uporabnika?')"><i class="fa fa-times fa-2x text-danger"></i></a>
                     </td>
                     <td>
                     <a href="editUser.php?id=<?php echo $row['id']; ?>"><i class="fa fa-pencil fa-2x text-muted"></i></a>
